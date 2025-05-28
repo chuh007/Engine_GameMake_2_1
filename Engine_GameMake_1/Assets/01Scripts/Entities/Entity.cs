@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
-namespace Blade.Entities
+namespace _01Scripts.Entities
 {
     public abstract class Entity : MonoBehaviour
     {

@@ -5,7 +5,8 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Blade.FSM.Editor
+#if UNITY_EDITOR
+namespace _01Scripts.FSM.Editor
 {
     [UnityEditor.CustomEditor(typeof(StateDataSO))]
     public class StateDataEditor : UnityEditor.Editor
@@ -33,4 +34,4 @@ namespace Blade.FSM.Editor
         }
     }
 }
-
+#endif

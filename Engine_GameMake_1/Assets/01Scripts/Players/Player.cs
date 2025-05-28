@@ -1,5 +1,5 @@
-using Blade.Entities;
-using Blade.FSM;
+using _01Scripts.Entities;
+using _01Scripts.FSM;
 using UnityEngine;
 
 namespace _01Scripts.Players

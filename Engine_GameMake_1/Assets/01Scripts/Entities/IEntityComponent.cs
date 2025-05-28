@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace Blade.Entities
+namespace _01Scripts.Entities
 {
     public interface IEntityComponent
     {

@@ -1,4 +1,4 @@
-﻿namespace Blade.Entities
+﻿namespace _01Scripts.Entities
 {
     public interface IAfterInitialize
     {

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Blade.Entities
+namespace _01Scripts.Entities
 {
     public class EntityAnimatorTrigger : MonoBehaviour, IEntityComponent
     {

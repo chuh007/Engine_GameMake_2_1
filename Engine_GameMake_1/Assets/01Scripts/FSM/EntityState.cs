@@ -1,7 +1,6 @@
-using Blade.Entities;
-using UnityEngine;
+using _01Scripts.Entities;
 
-namespace Blade.FSM
+namespace _01Scripts.FSM
 {
     public abstract class EntityState
     {

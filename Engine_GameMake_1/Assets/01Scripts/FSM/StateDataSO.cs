@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Blade.FSM
+namespace _01Scripts.FSM
 {
     [CreateAssetMenu(fileName = "StateData", menuName = "SO/StateData")]
     public class StateDataSO : ScriptableObject

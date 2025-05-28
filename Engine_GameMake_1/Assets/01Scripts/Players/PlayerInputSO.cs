@@ -11,8 +11,9 @@ namespace _01Scripts.Players
         // public event Action<Vector2> OnMovementChange;
         public event Action OnAttackPressed;
         
-        public Vector2 MovementKey {get; private set;}
-
+        public Vector2 MovementKey { get; private set; }
+        public Vector2 LookKey { get; private set; }
+        
         private Controls _controls;
         private Vector2 _screenPosition; // 마우스 좌표
         private Vector3 _worldPosition;
@@ -40,7 +41,7 @@ namespace _01Scripts.Players
 
         public void OnLook(InputAction.CallbackContext context)
         {
-            _screenPosition = context.ReadValue<Vector2>();
+            LookKey = context.ReadValue<Vector2>();
         }
 
         public void OnAttack(InputAction.CallbackContext context)

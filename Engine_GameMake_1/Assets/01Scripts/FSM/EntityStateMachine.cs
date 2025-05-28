@@ -1,9 +1,9 @@
-using Blade.Entities;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using _01Scripts.Entities;
 
-namespace Blade.FSM
+namespace _01Scripts.FSM
 {
     public class EntityStateMachine
     {

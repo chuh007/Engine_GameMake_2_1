@@ -1,4 +1,4 @@
-using Blade.Entities;
+using _01Scripts.Entities;
 using UnityEngine;
 
 namespace _01Scripts.Players.States

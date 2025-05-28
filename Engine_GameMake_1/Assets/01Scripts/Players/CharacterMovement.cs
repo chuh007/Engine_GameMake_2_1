@@ -1,17 +1,15 @@
-using System;
 using _01Scripts.Entities;
-using Blade.Entities;
 using Chuh007Lib.StatSystem;
 using UnityEngine;
 
-namespace Blade.Players
+namespace _01Scripts.Players
 {
     public class CharacterMovement : MonoBehaviour, IEntityComponent, IAfterInitialize
     {
         [SerializeField] private StatSO moveSpeedStat;
         [SerializeField] private float gravity = -9.8f;
         [SerializeField] private CharacterController controller;
-        // [SerializeField] private Transform parent;
+        [SerializeField] private Transform parent;
         
         private float _moveSpeed = 8f;
         public bool IsGround => controller.isGrounded;
@@ -62,7 +60,7 @@ namespace Blade.Players
         {
             if (CanManualMovement)
             {
-                _velocity = Quaternion.Euler(0, -45f, 0) * _movementDirection;
+                _velocity = parent.transform.rotation * _movementDirection;
                 _velocity *= _moveSpeed * Time.fixedDeltaTime;
             }
             else
@@ -70,13 +68,13 @@ namespace Blade.Players
                 _velocity = _autoMovement * Time.fixedDeltaTime;
             }
 
-            if (_velocity.magnitude > 0)
-            {
-                Quaternion targetRot = Quaternion.LookRotation(_velocity);
-                float rotationSpeed = 20f;
-                Transform parent = _entity.transform;
-                parent.rotation = Quaternion.Lerp(parent.rotation, targetRot, Time.fixedDeltaTime * rotationSpeed);
-            }
+            // if (_velocity.magnitude > 0)
+            // {
+            //     Quaternion targetRot = Quaternion.LookRotation(_velocity);
+            //     float rotationSpeed = 20f;
+            //     Transform parent = _entity.transform;
+            //     parent.rotation = Quaternion.Lerp(parent.rotation, targetRot, Time.fixedDeltaTime * rotationSpeed);
+            // }
         }
 
         private void ApplyGravity()
