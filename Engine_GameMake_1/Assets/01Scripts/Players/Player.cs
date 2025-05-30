@@ -1,10 +1,11 @@
 using _01Scripts.Entities;
 using _01Scripts.FSM;
+using Chuh007Lib.Dependencies;
 using UnityEngine;
 
 namespace _01Scripts.Players
 {
-    public class Player : Entity
+    public class Player : Entity, IDependencyProvider
     {
         [field: SerializeField] public PlayerInputSO PlayerInput { get; private set; }
 
@@ -12,6 +13,9 @@ namespace _01Scripts.Players
 
         private EntityStateMachine _stateMachine;
 
+        [Provide]
+        public Player ProvidePlayer() => this;
+        
         protected override void Awake()
         {
             base.Awake();

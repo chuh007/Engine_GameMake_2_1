@@ -13,6 +13,9 @@ namespace _01Scripts.Entities
         }
 
         public void SetParam(int hash, float value) => animator.SetFloat(hash, value);
+
+        public void SetParamDamping(int hash, float value, float dampTime, float deltaTime) =>
+            animator.SetFloat(hash, value, dampTime, deltaTime);
         public void SetParam(int hash, int value) => animator.SetInteger(hash, value);
         public void SetParam(int hash, bool value) => animator.SetBool(hash, value);
         public void SetParam(int hash) => animator.SetTrigger(hash);

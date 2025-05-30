@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _01Scripts.Players.States
 {
-    public class PlayerSearchIdleState : PlayerState
+    public class PlayerSearchIdleState : PlayerSearchState
     {
 
         public PlayerSearchIdleState(Entity entity, int animationHash) : base(entity, animationHash)

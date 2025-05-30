@@ -8,8 +8,8 @@ namespace _01Scripts.Players
     public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     {
         [SerializeField] private LayerMask whatIsGround;
-        // public event Action<Vector2> OnMovementChange;
-        public event Action OnAttackPressed;
+        public event Action OnInteractPressed;
+        public event Action<bool> OnRunPressed;
         
         public Vector2 MovementKey { get; private set; }
         public Vector2 LookKey { get; private set; }
@@ -32,6 +32,8 @@ namespace _01Scripts.Players
         private void OnDisable()
         {
             _controls.Player.Disable();
+            _controls.BattlePlayer.Disable();
+            _controls.UI.Disable();
         }
 
         public void OnMove(InputAction.CallbackContext context)
@@ -44,15 +46,18 @@ namespace _01Scripts.Players
             LookKey = context.ReadValue<Vector2>();
         }
 
-        public void OnAttack(InputAction.CallbackContext context)
+        public void OnRun(InputAction.CallbackContext context)
         {
             if(context.performed)
-                OnAttackPressed?.Invoke();
+                OnRunPressed?.Invoke(true);
+            if(context.canceled)
+                OnRunPressed?.Invoke(false);
         }
-
+        
         public void OnInteract(InputAction.CallbackContext context)
         {
-            
+            if(context.performed)
+                OnInteractPressed?.Invoke();
         }
 
 

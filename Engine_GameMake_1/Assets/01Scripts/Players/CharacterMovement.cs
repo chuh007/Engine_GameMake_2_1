@@ -11,7 +11,16 @@ namespace _01Scripts.Players
         [SerializeField] private CharacterController controller;
         [SerializeField] private Transform parent;
         
-        private float _moveSpeed = 8f;
+        private float _moveSpeed = 3f;
+        private float _runMoveSpeedMultiply = 2.5f;
+        private bool _isRunning = false;
+
+        public bool IsRunning
+        {
+            get => _isRunning;
+            set => _isRunning = value;
+        }
+        
         public bool IsGround => controller.isGrounded;
         public bool CanManualMovement { get; set; } = true;
         private Vector3 _autoMovement;
@@ -61,20 +70,13 @@ namespace _01Scripts.Players
             if (CanManualMovement)
             {
                 _velocity = parent.transform.rotation * _movementDirection;
+                if(_isRunning) _velocity *= _runMoveSpeedMultiply;
                 _velocity *= _moveSpeed * Time.fixedDeltaTime;
             }
             else
             {
                 _velocity = _autoMovement * Time.fixedDeltaTime;
             }
-
-            // if (_velocity.magnitude > 0)
-            // {
-            //     Quaternion targetRot = Quaternion.LookRotation(_velocity);
-            //     float rotationSpeed = 20f;
-            //     Transform parent = _entity.transform;
-            //     parent.rotation = Quaternion.Lerp(parent.rotation, targetRot, Time.fixedDeltaTime * rotationSpeed);
-            // }
         }
 
         private void ApplyGravity()
