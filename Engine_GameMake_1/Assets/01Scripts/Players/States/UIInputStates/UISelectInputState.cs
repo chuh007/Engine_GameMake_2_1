@@ -3,7 +3,7 @@ using _01Scripts.FSM;
 
 namespace _01Scripts.Players.States.UIInputStates
 {
-    public class UISelectInputState : EntityState
+    public class UISelectInputState : UIInputState
     {
         protected Player _player;
         
@@ -15,13 +15,12 @@ namespace _01Scripts.Players.States.UIInputStates
         public override void Enter()
         {
             base.Enter();
-            _player.PlayerBattleInput.OnAttackPressed += HandleAttackPressed;
-            // _player.PlayerBattleInput.
+            _player.PlayerBattleInput.OnAttackKeyPressed += HandleAttackKeyPressed;
         }
 
-        private void HandleAttackPressed()
+        private void HandleAttackKeyPressed()
         {
-            
+            _player.ChangeState("UIATTACKSELECT");
         }
         
         public override void Exit()

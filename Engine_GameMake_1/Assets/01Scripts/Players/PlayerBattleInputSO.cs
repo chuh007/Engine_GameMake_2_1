@@ -7,7 +7,8 @@ namespace _01Scripts.Players
     [CreateAssetMenu(fileName = "PlayerBattleInputSO", menuName = "SO/PlayerBattleInputSO", order = 0)]
     public class PlayerBattleInputSO : ScriptableObject, Controls.IBattlePlayerActions
     {
-        public event Action OnAttackPressed;
+        public event Action OnAttackKeyPressed;
+        public event Action OnItemKeyPressed;
 
         private Controls _controls;
 
@@ -50,7 +51,18 @@ namespace _01Scripts.Players
 
         public void OnAttack(InputAction.CallbackContext context)
         {
+            OnAttackKeyPressed?.Invoke();
+        }
+        
+        public void OnItem(InputAction.CallbackContext context)
+        {
+            OnItemKeyPressed?.Invoke();
+        }
+
+        public void OnMouse(InputAction.CallbackContext context)
+        {
             
         }
+
     }
 }
