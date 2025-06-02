@@ -1,18 +1,18 @@
-using _01Scripts.Entities;
+﻿using _01Scripts.Entities;
+using _01Scripts.Players.States.PlayerSearchStates;
 using UnityEngine;
 
 namespace _01Scripts.Players.States
 {
-    public class PlayerSearchMoveState : PlayerSearchState
+    public class PlayerSearchRunState : PlayerSearchState
     {
         private int _xMovementHash = Animator.StringToHash("XMovement");
         private int _yMovementHash = Animator.StringToHash("YMovement");
         
-        public PlayerSearchMoveState(Entity entity, int animationHash) : base(entity, animationHash)
+        public PlayerSearchRunState(Entity entity, int animationHash) : base(entity, animationHash)
         {
         }
-
-
+        
         public override void Update()
         {
             base.Update();
@@ -22,10 +22,8 @@ namespace _01Scripts.Players.States
             _movement.SetMovementDirection(movementKey);
             if (movementKey.magnitude < _inputThreshold)
                 _player.ChangeState("IDLE");
-            if(_movement.IsRunning)
-                _player.ChangeState("RUN");
+            if(!_movement.IsRunning)
+                _player.ChangeState("MOVE");
         }
-
     }
 }
-

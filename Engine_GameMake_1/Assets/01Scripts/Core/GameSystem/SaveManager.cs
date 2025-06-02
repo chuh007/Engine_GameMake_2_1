@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using _01Scripts.Core;
 using _01Scripts.Core.EventSystem;
+using Code.Core.GameSystem;
 using UnityEngine;
 
-namespace Code.Core.GameSystem
+namespace _01Scripts.Core.GameSystem
 {
     [Serializable]
     public struct SaveData

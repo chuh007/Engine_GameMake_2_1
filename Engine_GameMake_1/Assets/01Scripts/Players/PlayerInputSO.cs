@@ -36,6 +36,11 @@ namespace _01Scripts.Players
             _controls.UI.Disable();
         }
 
+        public void SetCallbacks()
+        {
+            _controls.Player.SetCallbacks(this);
+        }
+        
         public void OnMove(InputAction.CallbackContext context)
         {
             MovementKey = context.ReadValue<Vector2>();

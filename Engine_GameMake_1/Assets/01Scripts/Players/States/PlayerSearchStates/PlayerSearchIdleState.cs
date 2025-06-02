@@ -1,4 +1,5 @@
 using _01Scripts.Entities;
+using _01Scripts.Players.States.PlayerSearchStates;
 using UnityEngine;
 
 namespace _01Scripts.Players.States

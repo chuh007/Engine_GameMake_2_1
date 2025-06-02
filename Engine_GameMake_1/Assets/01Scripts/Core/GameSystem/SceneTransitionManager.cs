@@ -1,9 +1,8 @@
-﻿using System;
-using _01Scripts.Core.EventSystem;
+﻿using _01Scripts.Core.EventSystem;
 using _01Scripts.Entities;
 using UnityEngine;
 
-namespace Code.Core.GameSystem
+namespace _01Scripts.Core.GameSystem
 {
     //모든 스크립트보다 빨리 실행돼.
     [DefaultExecutionOrder(-20)]

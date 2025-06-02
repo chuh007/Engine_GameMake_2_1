@@ -1,10 +1,9 @@
-﻿using System;
-using _01Scripts.Core.EventSystem;
+﻿using _01Scripts.Core.EventSystem;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Code.UI
+namespace _01Scripts.UI
 {
     public class ScreenManager : MonoBehaviour
     {
@@ -16,7 +15,7 @@ namespace Code.UI
 
         private void Awake()
         {
-            //UI의 이미지는 스프라이트 렌더러와 다르게 모두가 같은 매티리얼을 참조해서 쓴다. 
+            //UI의 이미지는 스프라이트 렌더러와 다르게 모두가 같은 매티리얼을 참조해서 쓴다.
             //그래서 이렇게 안해주면 같은 메티리얼을 쓰는 모든 애들이 다 똑같이 동작하게 된다.
             fadeImage.material = new Material(fadeImage.material);
             uiChannel.AddListener<FadeEvent>(HandleFadeScreen);

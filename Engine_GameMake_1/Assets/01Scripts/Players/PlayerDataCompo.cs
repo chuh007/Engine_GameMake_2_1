@@ -34,9 +34,6 @@ namespace _01Scripts.Players
         public void AddExp(int amount)
         {
             currentExp += amount;
-            //나중에 여기서 레벨업이벤트도 발행하고 처리한다.
-            //연호, 호성이에게 영상편지
-            // 그동안 즐거웠다~
         }
 
         #region SaveData Logic

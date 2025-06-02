@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using _01Scripts.Core.EventSystem;
 using _01Scripts.Entities;
 using _01Scripts.Players;
@@ -25,12 +26,19 @@ namespace _01Scripts.Interact
         {
             Debug.Log("유령발견ㄴㄴㄴㄴㄴㄴㄴ");
             playerFinder.Target.GetCompo<CharacterMovement>().CanManualMovement = false;
+                
+            uiChannel.AddListener<FadeCompleteEvent>(HandleFadeComplete);
+            StartCoroutine(GotoBattle());
+        }
+
+        private IEnumerator GotoBattle()
+        {
             FadeEvent fadeEvt = UIEvents.FadeEvent;
             fadeEvt.isFadeIn = false;
             fadeEvt.fadeTime = 0.5f;
-                
-            uiChannel.AddListener<FadeCompleteEvent>(HandleFadeComplete);
+            yield return new WaitForSeconds(0.5f);
             uiChannel.RaiseEvent(fadeEvt);
+
         }
 
         private void HandleFadeComplete(FadeCompleteEvent obj)

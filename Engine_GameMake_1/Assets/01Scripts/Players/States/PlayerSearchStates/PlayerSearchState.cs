@@ -2,7 +2,7 @@ using _01Scripts.Entities;
 using _01Scripts.FSM;
 using UnityEngine;
 
-namespace _01Scripts.Players.States
+namespace _01Scripts.Players.States.PlayerSearchStates
 {
     public abstract class PlayerSearchState : EntityState
     {

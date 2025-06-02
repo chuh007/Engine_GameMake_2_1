@@ -12,6 +12,7 @@ namespace _01Scripts.Players
         
         private Player _player;
         private IInteractable _target;
+        private string _targetName;
         
         public void Initialize(Entity entity)
         {
@@ -29,17 +30,20 @@ namespace _01Scripts.Players
             if (hit.transform.TryGetComponent(out IInteractable interactable))
             {
                 _target = interactable;
+                _targetName = interactable.Name;
             }
         }
 
         public void Interact()
         {
+            _player.ChangeState("INTERACT");
             _target?.Interact();
         }
         
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
+            if(cameraTrm == null) return;
             Gizmos.DrawRay(cameraTrm.position, cameraTrm.forward * 5);
         }
     }

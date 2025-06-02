@@ -312,9 +312,36 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             ""id"": ""1aa52026-3763-437e-97fc-92321c99d64d"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""AttackQTE"",
                     ""type"": ""Button"",
                     ""id"": ""75c607d9-32b3-44eb-8f86-f189f140aeb7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Evasion"",
+                    ""type"": ""Button"",
+                    ""id"": ""307ad20c-9572-47f7-966a-221e7430bf49"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""aff9001c-f7af-4add-a4b4-7cf13fa9a1a7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""9b2bf8ca-3aa3-4c6a-9490-c3cbd167613d"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -325,11 +352,77 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""90c91f0b-c093-4b70-92eb-5b4e65990642"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""AttackQTE"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0bf8b212-330e-4902-8ee8-3dac1a25bf33"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackQTE"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""564a6fec-4322-45fd-b846-f0e5824e77eb"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackQTE"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef2eb4ed-5c0d-474b-81f4-605e39dac226"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackQTE"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b48ee491-a73c-4cb4-a164-22fc59c6069f"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Evasion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd84279a-104c-432e-9026-7da8bb982bfd"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""28ca97e9-bb0a-4493-99ca-3a2826d12288"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -923,7 +1016,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         // BattlePlayer
         m_BattlePlayer = asset.FindActionMap("BattlePlayer", throwIfNotFound: true);
-        m_BattlePlayer_Newaction = m_BattlePlayer.FindAction("New action", throwIfNotFound: true);
+        m_BattlePlayer_AttackQTE = m_BattlePlayer.FindAction("AttackQTE", throwIfNotFound: true);
+        m_BattlePlayer_Evasion = m_BattlePlayer.FindAction("Evasion", throwIfNotFound: true);
+        m_BattlePlayer_Select = m_BattlePlayer.FindAction("Select", throwIfNotFound: true);
+        m_BattlePlayer_Attack = m_BattlePlayer.FindAction("Attack", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1147,7 +1243,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     // BattlePlayer
     private readonly InputActionMap m_BattlePlayer;
     private List<IBattlePlayerActions> m_BattlePlayerActionsCallbackInterfaces = new List<IBattlePlayerActions>();
-    private readonly InputAction m_BattlePlayer_Newaction;
+    private readonly InputAction m_BattlePlayer_AttackQTE;
+    private readonly InputAction m_BattlePlayer_Evasion;
+    private readonly InputAction m_BattlePlayer_Select;
+    private readonly InputAction m_BattlePlayer_Attack;
     /// <summary>
     /// Provides access to input actions defined in input action map "BattlePlayer".
     /// </summary>
@@ -1160,9 +1259,21 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// </summary>
         public BattlePlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "BattlePlayer/Newaction".
+        /// Provides access to the underlying input action "BattlePlayer/AttackQTE".
         /// </summary>
-        public InputAction @Newaction => m_Wrapper.m_BattlePlayer_Newaction;
+        public InputAction @AttackQTE => m_Wrapper.m_BattlePlayer_AttackQTE;
+        /// <summary>
+        /// Provides access to the underlying input action "BattlePlayer/Evasion".
+        /// </summary>
+        public InputAction @Evasion => m_Wrapper.m_BattlePlayer_Evasion;
+        /// <summary>
+        /// Provides access to the underlying input action "BattlePlayer/Select".
+        /// </summary>
+        public InputAction @Select => m_Wrapper.m_BattlePlayer_Select;
+        /// <summary>
+        /// Provides access to the underlying input action "BattlePlayer/Attack".
+        /// </summary>
+        public InputAction @Attack => m_Wrapper.m_BattlePlayer_Attack;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1189,9 +1300,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_BattlePlayerActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_BattlePlayerActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @AttackQTE.started += instance.OnAttackQTE;
+            @AttackQTE.performed += instance.OnAttackQTE;
+            @AttackQTE.canceled += instance.OnAttackQTE;
+            @Evasion.started += instance.OnEvasion;
+            @Evasion.performed += instance.OnEvasion;
+            @Evasion.canceled += instance.OnEvasion;
+            @Select.started += instance.OnSelect;
+            @Select.performed += instance.OnSelect;
+            @Select.canceled += instance.OnSelect;
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
         }
 
         /// <summary>
@@ -1203,9 +1323,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="BattlePlayerActions" />
         private void UnregisterCallbacks(IBattlePlayerActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @AttackQTE.started -= instance.OnAttackQTE;
+            @AttackQTE.performed -= instance.OnAttackQTE;
+            @AttackQTE.canceled -= instance.OnAttackQTE;
+            @Evasion.started -= instance.OnEvasion;
+            @Evasion.performed -= instance.OnEvasion;
+            @Evasion.canceled -= instance.OnEvasion;
+            @Select.started -= instance.OnSelect;
+            @Select.performed -= instance.OnSelect;
+            @Select.canceled -= instance.OnSelect;
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
         }
 
         /// <summary>
@@ -1543,12 +1672,33 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     public interface IBattlePlayerActions
     {
         /// <summary>
-        /// Method invoked when associated input action "New action" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "AttackQTE" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnAttackQTE(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Evasion" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnEvasion(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Select" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSelect(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Attack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAttack(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

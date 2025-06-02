@@ -1,16 +1,24 @@
 using _01Scripts.Entities;
 using _01Scripts.FSM;
+using _01Scripts.TurnSystem;
 using Chuh007Lib.Dependencies;
 using UnityEngine;
 
 namespace _01Scripts.Players
 {
+    public enum PlayerType
+    {
+        Search, Battle
+    }
+    
     public class Player : Entity, IDependencyProvider
     {
+        [SerializeField] private PlayerType playerType;
         [field: SerializeField] public PlayerInputSO PlayerInput { get; private set; }
+        [field: SerializeField] public PlayerBattleInputSO PlayerBattleInput { get; private set; }
 
         [SerializeField] private StateDataSO[] states;
-
+        
         private EntityStateMachine _stateMachine;
 
         [Provide]
@@ -20,7 +28,8 @@ namespace _01Scripts.Players
         {
             base.Awake();
             _stateMachine = new EntityStateMachine(this, states);
-
+            if(playerType == PlayerType.Search) PlayerInput.SetCallbacks();
+            else if(playerType == PlayerType.Battle) PlayerBattleInput.SetCallbacks();
         }
 
         private void OnDisable()
