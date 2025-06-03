@@ -321,7 +321,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Evasion"",
+                    ""name"": ""Block"",
                     ""type"": ""Button"",
                     ""id"": ""307ad20c-9572-47f7-966a-221e7430bf49"",
                     ""expectedControlType"": """",
@@ -364,6 +364,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CancelOrESC"",
+                    ""type"": ""Button"",
+                    ""id"": ""d839e827-679b-4c09-9419-5b2ee33bf8ea"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -380,45 +389,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0bf8b212-330e-4902-8ee8-3dac1a25bf33"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AttackQTE"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""564a6fec-4322-45fd-b846-f0e5824e77eb"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AttackQTE"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ef2eb4ed-5c0d-474b-81f4-605e39dac226"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AttackQTE"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""b48ee491-a73c-4cb4-a164-22fc59c6069f"",
                     ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Evasion"",
+                    ""action"": ""Block"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -463,6 +439,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Item"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70827ba5-0534-4723-956c-13be82db8bc0"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CancelOrESC"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1057,11 +1044,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         // BattlePlayer
         m_BattlePlayer = asset.FindActionMap("BattlePlayer", throwIfNotFound: true);
         m_BattlePlayer_AttackQTE = m_BattlePlayer.FindAction("AttackQTE", throwIfNotFound: true);
-        m_BattlePlayer_Evasion = m_BattlePlayer.FindAction("Evasion", throwIfNotFound: true);
+        m_BattlePlayer_Block = m_BattlePlayer.FindAction("Block", throwIfNotFound: true);
         m_BattlePlayer_Select = m_BattlePlayer.FindAction("Select", throwIfNotFound: true);
         m_BattlePlayer_Attack = m_BattlePlayer.FindAction("Attack", throwIfNotFound: true);
         m_BattlePlayer_Mouse = m_BattlePlayer.FindAction("Mouse", throwIfNotFound: true);
         m_BattlePlayer_Item = m_BattlePlayer.FindAction("Item", throwIfNotFound: true);
+        m_BattlePlayer_CancelOrESC = m_BattlePlayer.FindAction("CancelOrESC", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1286,11 +1274,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_BattlePlayer;
     private List<IBattlePlayerActions> m_BattlePlayerActionsCallbackInterfaces = new List<IBattlePlayerActions>();
     private readonly InputAction m_BattlePlayer_AttackQTE;
-    private readonly InputAction m_BattlePlayer_Evasion;
+    private readonly InputAction m_BattlePlayer_Block;
     private readonly InputAction m_BattlePlayer_Select;
     private readonly InputAction m_BattlePlayer_Attack;
     private readonly InputAction m_BattlePlayer_Mouse;
     private readonly InputAction m_BattlePlayer_Item;
+    private readonly InputAction m_BattlePlayer_CancelOrESC;
     /// <summary>
     /// Provides access to input actions defined in input action map "BattlePlayer".
     /// </summary>
@@ -1307,9 +1296,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @AttackQTE => m_Wrapper.m_BattlePlayer_AttackQTE;
         /// <summary>
-        /// Provides access to the underlying input action "BattlePlayer/Evasion".
+        /// Provides access to the underlying input action "BattlePlayer/Block".
         /// </summary>
-        public InputAction @Evasion => m_Wrapper.m_BattlePlayer_Evasion;
+        public InputAction @Block => m_Wrapper.m_BattlePlayer_Block;
         /// <summary>
         /// Provides access to the underlying input action "BattlePlayer/Select".
         /// </summary>
@@ -1326,6 +1315,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "BattlePlayer/Item".
         /// </summary>
         public InputAction @Item => m_Wrapper.m_BattlePlayer_Item;
+        /// <summary>
+        /// Provides access to the underlying input action "BattlePlayer/CancelOrESC".
+        /// </summary>
+        public InputAction @CancelOrESC => m_Wrapper.m_BattlePlayer_CancelOrESC;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1355,9 +1348,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @AttackQTE.started += instance.OnAttackQTE;
             @AttackQTE.performed += instance.OnAttackQTE;
             @AttackQTE.canceled += instance.OnAttackQTE;
-            @Evasion.started += instance.OnEvasion;
-            @Evasion.performed += instance.OnEvasion;
-            @Evasion.canceled += instance.OnEvasion;
+            @Block.started += instance.OnBlock;
+            @Block.performed += instance.OnBlock;
+            @Block.canceled += instance.OnBlock;
             @Select.started += instance.OnSelect;
             @Select.performed += instance.OnSelect;
             @Select.canceled += instance.OnSelect;
@@ -1370,6 +1363,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Item.started += instance.OnItem;
             @Item.performed += instance.OnItem;
             @Item.canceled += instance.OnItem;
+            @CancelOrESC.started += instance.OnCancelOrESC;
+            @CancelOrESC.performed += instance.OnCancelOrESC;
+            @CancelOrESC.canceled += instance.OnCancelOrESC;
         }
 
         /// <summary>
@@ -1384,9 +1380,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @AttackQTE.started -= instance.OnAttackQTE;
             @AttackQTE.performed -= instance.OnAttackQTE;
             @AttackQTE.canceled -= instance.OnAttackQTE;
-            @Evasion.started -= instance.OnEvasion;
-            @Evasion.performed -= instance.OnEvasion;
-            @Evasion.canceled -= instance.OnEvasion;
+            @Block.started -= instance.OnBlock;
+            @Block.performed -= instance.OnBlock;
+            @Block.canceled -= instance.OnBlock;
             @Select.started -= instance.OnSelect;
             @Select.performed -= instance.OnSelect;
             @Select.canceled -= instance.OnSelect;
@@ -1399,6 +1395,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Item.started -= instance.OnItem;
             @Item.performed -= instance.OnItem;
             @Item.canceled -= instance.OnItem;
+            @CancelOrESC.started -= instance.OnCancelOrESC;
+            @CancelOrESC.performed -= instance.OnCancelOrESC;
+            @CancelOrESC.canceled -= instance.OnCancelOrESC;
         }
 
         /// <summary>
@@ -1743,12 +1742,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAttackQTE(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Evasion" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Block" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnEvasion(InputAction.CallbackContext context);
+        void OnBlock(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Select" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -1777,6 +1776,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnItem(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "CancelOrESC" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCancelOrESC(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

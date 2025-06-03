@@ -58,27 +58,23 @@ namespace _01Scripts.TurnSystem
 
             while (_actionOrders.Count < 10)
             {
-                // 행동 가능한 유닛 찾기
                 var readyActors = _turnActors
                     .Where(a => a.ActionValue >= threshold)
                     .ToList();
 
                 if (readyActors.Count == 0)
                 {
-                    // 아무도 못 움직이면 전부 ActionValue += Speed
                     foreach (var actor in _turnActors)
                         actor.ActionValue += actor.Speed;
 
                     continue;
                 }
 
-                // 행동치 > 속도 높은 순으로 정렬
                 var executionActor = readyActors
                     .OrderByDescending(a => a.ActionValue)
                     .ThenByDescending(a => a.Speed)
                     .First();
 
-                // 행동치 차감 및 큐에 추가
                 executionActor.ActionValue -= threshold;
                 _actionOrders.Enqueue(executionActor);
             }

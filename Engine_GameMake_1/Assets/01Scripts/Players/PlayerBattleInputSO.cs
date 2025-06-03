@@ -8,7 +8,11 @@ namespace _01Scripts.Players
     public class PlayerBattleInputSO : ScriptableObject, Controls.IBattlePlayerActions
     {
         public event Action OnAttackKeyPressed;
+        public event Action OnQTEKeyPressed;
+        public event Action OnBlockKeyPressed;
         public event Action OnItemKeyPressed;
+        public event Action OnCancelOrESCKeyPressed;
+        public event Action OnSelectKeyPressed;
 
         private Controls _controls;
 
@@ -36,27 +40,41 @@ namespace _01Scripts.Players
         
         public void OnAttackQTE(InputAction.CallbackContext context)
         {
-            
+            if(context.performed)
+                OnQTEKeyPressed?.Invoke();
         }
 
-        public void OnEvasion(InputAction.CallbackContext context)
+        public void OnBlock(InputAction.CallbackContext context)
         {
-            
+            if(context.performed)
+                OnBlockKeyPressed?.Invoke();
         }
 
         public void OnSelect(InputAction.CallbackContext context)
         {
-            
+            if(context.performed)
+                OnSelectKeyPressed?.Invoke();
         }
 
         public void OnAttack(InputAction.CallbackContext context)
         {
-            OnAttackKeyPressed?.Invoke();
+            if (context.performed)
+            {
+                Debug.Log("OnAttack");
+                OnAttackKeyPressed?.Invoke();
+            }
         }
         
         public void OnItem(InputAction.CallbackContext context)
         {
-            OnItemKeyPressed?.Invoke();
+            if (context.performed)
+                OnItemKeyPressed?.Invoke();
+        }
+
+        public void OnCancelOrESC(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+                OnCancelOrESCKeyPressed?.Invoke();
         }
 
         public void OnMouse(InputAction.CallbackContext context)

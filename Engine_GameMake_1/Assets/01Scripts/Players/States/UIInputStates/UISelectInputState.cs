@@ -1,5 +1,6 @@
 ﻿using _01Scripts.Entities;
 using _01Scripts.FSM;
+using UnityEngine;
 
 namespace _01Scripts.Players.States.UIInputStates
 {
@@ -15,7 +16,15 @@ namespace _01Scripts.Players.States.UIInputStates
         public override void Enter()
         {
             base.Enter();
+            _player.PlayerBattleInput.OnCancelOrESCKeyPressed += HandleCancelOrEscKeyPressed;
             _player.PlayerBattleInput.OnAttackKeyPressed += HandleAttackKeyPressed;
+            _player.PlayerBattleInput.OnItemKeyPressed += HandleItemPressed;
+            
+        }
+        
+        private void HandleCancelOrEscKeyPressed()
+        {
+            // ESC 출력
         }
 
         private void HandleAttackKeyPressed()
@@ -23,8 +32,19 @@ namespace _01Scripts.Players.States.UIInputStates
             _player.ChangeState("UIATTACKSELECT");
         }
         
+        
+        private void HandleItemPressed()
+        {
+            _player.ChangeState("UIUSEITEMSELECT");
+        }
+
+        
+        
         public override void Exit()
         {
+            _player.PlayerBattleInput.OnCancelOrESCKeyPressed -= HandleCancelOrEscKeyPressed;
+            _player.PlayerBattleInput.OnAttackKeyPressed -= HandleAttackKeyPressed;
+            _player.PlayerBattleInput.OnItemKeyPressed -= HandleItemPressed;
             base.Exit();
         }
 

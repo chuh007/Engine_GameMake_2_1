@@ -235,7 +235,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Evasion",
+                    "name": "Block",
                     "type": "Button",
                     "id": "307ad20c-9572-47f7-966a-221e7430bf49",
                     "expectedControlType": "",
@@ -278,6 +278,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "CancelOrESC",
+                    "type": "Button",
+                    "id": "d839e827-679b-4c09-9419-5b2ee33bf8ea",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -294,45 +303,12 @@
                 },
                 {
                     "name": "",
-                    "id": "0bf8b212-330e-4902-8ee8-3dac1a25bf33",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AttackQTE",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "564a6fec-4322-45fd-b846-f0e5824e77eb",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AttackQTE",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ef2eb4ed-5c0d-474b-81f4-605e39dac226",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AttackQTE",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "b48ee491-a73c-4cb4-a164-22fc59c6069f",
                     "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Evasion",
+                    "action": "Block",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -377,6 +353,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Item",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "70827ba5-0534-4723-956c-13be82db8bc0",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CancelOrESC",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

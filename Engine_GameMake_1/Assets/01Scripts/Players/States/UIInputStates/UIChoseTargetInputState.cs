@@ -3,35 +3,27 @@ using UnityEngine;
 
 namespace _01Scripts.Players.States.UIInputStates
 {
-    public class UIAttackSelectInputState : UIInputState
+    public class UIChoseTargetInputState : UIInputState
     {
-        public UIAttackSelectInputState(Entity entity, int animationHash) : base(entity, animationHash)
+        public UIChoseTargetInputState(Entity entity, int animationHash) : base(entity, animationHash)
         {
         }
-
+        
         public override void Enter()
         {
             base.Enter();
             _player.PlayerBattleInput.OnCancelOrESCKeyPressed += HandleCancelOrEscKeyPressed;
-            _player.PlayerBattleInput.OnSelectKeyPressed += HandleSelectKeyPressed;
-        }
-
-        private void HandleSelectKeyPressed()
-        {
-            
         }
 
         private void HandleCancelOrEscKeyPressed()
         {
-            _player.ChangeState("UISELECT");
+            _player.ChangeState("UIATTACKSELECT");
         }
-        
+
         public override void Exit()
         {
             _player.PlayerBattleInput.OnCancelOrESCKeyPressed -= HandleCancelOrEscKeyPressed;
-            _player.PlayerBattleInput.OnSelectKeyPressed -= HandleSelectKeyPressed;
             base.Exit();
         }
-
     }
 }
