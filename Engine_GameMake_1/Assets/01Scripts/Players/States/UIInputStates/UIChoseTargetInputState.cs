@@ -14,9 +14,16 @@ namespace _01Scripts.Players.States.UIInputStates
         {
             base.Enter();
             _player.PlayerBattleInput.OnCancelOrESCKeyPressed += HandleCancelOrEscKeyPressed;
+            _player.PlayerBattleInput.OnSelectKeyPressed += HandleSelectKeyPressed;
             PlayerUIInoutComponent.InputUIChanged(ControlUIType.UIChoseTarget);
         }
 
+        
+        private void HandleSelectKeyPressed()
+        {
+            _player.ChangeState("UIQTEINPUT");
+        }
+        
         private void HandleCancelOrEscKeyPressed()
         {
             _player.ChangeState("UIATTACKSELECT");
@@ -25,6 +32,7 @@ namespace _01Scripts.Players.States.UIInputStates
         public override void Exit()
         {
             _player.PlayerBattleInput.OnCancelOrESCKeyPressed -= HandleCancelOrEscKeyPressed;
+            _player.PlayerBattleInput.OnSelectKeyPressed -= HandleSelectKeyPressed;
             base.Exit();
         }
     }

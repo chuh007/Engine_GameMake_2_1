@@ -60,7 +60,6 @@ namespace _01Scripts.Players
         {
             if (context.performed)
             {
-                Debug.Log("OnAttack");
                 OnAttackKeyPressed?.Invoke();
             }
         }

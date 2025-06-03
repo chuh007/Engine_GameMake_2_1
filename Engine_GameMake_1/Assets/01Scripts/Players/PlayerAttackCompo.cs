@@ -1,62 +1,24 @@
+using _01Scripts.Combat;
 using _01Scripts.Entities;
 using UnityEngine;
 
 namespace _01Scripts.Players
 {
-    public class PlayerAttackCompo : MonoBehaviour, IEntityComponent
+    public class PlayerAttackCompo : EntityAttackCompo
     {
-        // [FormerlySerializedAs("attackDatas")] [SerializeField] private AttackDataSO[] attackDataList;
-        [SerializeField] private float comboWindow = 0.7f;
         private Entity _entity;
         private EntityAnimator _entityAnimator;
 
-        private readonly int _attackSpeedHash = Animator.StringToHash("ATTACK_SPEED");
-        private readonly int _comboCounterHash = Animator.StringToHash("COMBO_COUNTER");
-
-        private float _attackSpeed = 1f;
-        private float _lastAttackTime;
-
-        public bool useMouseDirection;
         
-        public int ComboCounter { get; set; } = 0;
-
-        // public AttackDataSO GetCurrentAttackData()
-        // {
-        //     Debug.Assert(attackDataList.Length>ComboCounter, "Comdo counter is out if range");
-        //     return attackDataList[ComboCounter];
-        // }
-        //
-        public float AttackSpeed
-        {
-            get => _attackSpeed;
-            set
-            {
-                _attackSpeed = value;
-                _entityAnimator.SetParam(_attackSpeedHash, _attackSpeed);
-            }
-        }
         
-        public void Initialize(Entity entity)
+        public override void Attack()
         {
-            _entity = entity;
-            _entityAnimator = entity.GetCompo<EntityAnimator>();
-            AttackSpeed = 1f;
+            base.Attack();
         }
 
-        public void Attack()
+        public override void EndAttack()
         {
-            bool comboCounterOver = ComboCounter > 2;
-            bool comboWindowExhaust = Time.time > _lastAttackTime + comboWindow;
-            if (comboCounterOver || comboWindowExhaust)
-                ComboCounter = 0;
-
-            _entityAnimator.SetParam(_comboCounterHash, ComboCounter);
-        }
-
-        public void EndAttack()
-        {
-            ComboCounter++;
-            _lastAttackTime = Time.time;
+            base.EndAttack();
         }
     }
 }

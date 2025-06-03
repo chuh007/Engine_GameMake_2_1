@@ -21,7 +21,7 @@ namespace _01Scripts.Players.States.UIInputStates
 
         private void HandleSelectKeyPressed()
         {
-            
+            _player.ChangeState("UICHOSETARGET");
         }
 
         private void HandleCancelOrEscKeyPressed()
