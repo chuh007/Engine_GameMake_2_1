@@ -1,4 +1,5 @@
-﻿using _01Scripts.Entities;
+﻿using _01Scripts.Core;
+using _01Scripts.Entities;
 using _01Scripts.FSM;
 using UnityEngine;
 
@@ -7,7 +8,6 @@ namespace _01Scripts.Players.States.UIInputStates
     public class UISelectInputState : UIInputState
     {
         protected Player _player;
-        
         public UISelectInputState(Entity entity, int animationHash) : base(entity, animationHash)
         {
             _player = entity as Player;
@@ -19,7 +19,7 @@ namespace _01Scripts.Players.States.UIInputStates
             _player.PlayerBattleInput.OnCancelOrESCKeyPressed += HandleCancelOrEscKeyPressed;
             _player.PlayerBattleInput.OnAttackKeyPressed += HandleAttackKeyPressed;
             _player.PlayerBattleInput.OnItemKeyPressed += HandleItemPressed;
-            
+            PlayerUIInoutComponent.InputUIChanged(ControlUIType.UISelect);
         }
         
         private void HandleCancelOrEscKeyPressed()

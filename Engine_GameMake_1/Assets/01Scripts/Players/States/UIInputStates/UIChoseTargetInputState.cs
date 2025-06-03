@@ -1,4 +1,5 @@
-﻿using _01Scripts.Entities;
+﻿using _01Scripts.Core;
+using _01Scripts.Entities;
 using UnityEngine;
 
 namespace _01Scripts.Players.States.UIInputStates
@@ -13,6 +14,7 @@ namespace _01Scripts.Players.States.UIInputStates
         {
             base.Enter();
             _player.PlayerBattleInput.OnCancelOrESCKeyPressed += HandleCancelOrEscKeyPressed;
+            PlayerUIInoutComponent.InputUIChanged(ControlUIType.UIChoseTarget);
         }
 
         private void HandleCancelOrEscKeyPressed()

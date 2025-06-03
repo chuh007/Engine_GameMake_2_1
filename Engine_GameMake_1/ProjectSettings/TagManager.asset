@@ -41,6 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 3188719527
+    locked: 0
+  - name: Entity
+    uniqueID: 842231221
+    locked: 0
+  - name: Effect
+    uniqueID: 1627837051
+    locked: 0
+  - name: UI
+    uniqueID: 3293908233
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1

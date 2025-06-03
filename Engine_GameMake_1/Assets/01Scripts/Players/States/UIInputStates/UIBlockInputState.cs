@@ -4,16 +4,16 @@ using UnityEngine;
 
 namespace _01Scripts.Players.States.UIInputStates
 {
-    public class UIQTEInputState : UIInputState
+    public class UIBlockInputState : UIInputState
     {
-        public UIQTEInputState(Entity entity, int animationHash) : base(entity, animationHash)
+        public UIBlockInputState(Entity entity, int animationHash) : base(entity, animationHash)
         {
         }
 
         public override void Enter()
         {
             base.Enter();
-            PlayerUIInoutComponent.InputUIChanged(ControlUIType.UIQTEInput);
+            PlayerUIInoutComponent.InputUIChanged(ControlUIType.UIBlockInput);
         }
     }
 }
