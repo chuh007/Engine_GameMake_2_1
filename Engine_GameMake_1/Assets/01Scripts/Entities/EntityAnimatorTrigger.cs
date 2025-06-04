@@ -7,6 +7,7 @@ namespace _01Scripts.Entities
     {
         public Action OnAnimationEndTrigger;
         public Action OnAnimationEventTrigger;
+        public Action OnAttackTrigger;
         
         private Entity _entity;
         
@@ -20,9 +21,9 @@ namespace _01Scripts.Entities
             OnAnimationEndTrigger?.Invoke();
         }
 
-        private void RollingEnd()
+        private void AttackTrigger()
         {
-            OnAnimationEndTrigger?.Invoke();
+            OnAttackTrigger?.Invoke();
         }
     }
 }

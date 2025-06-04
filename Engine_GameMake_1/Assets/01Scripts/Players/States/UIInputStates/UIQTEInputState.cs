@@ -7,11 +7,9 @@ namespace _01Scripts.Players.States.UIInputStates
 {
     public class UIQTEInputState : UIInputState
     {
-        private PlayerAttackCompo _attackCompo;
         
         public UIQTEInputState(Entity entity, int animationHash) : base(entity, animationHash)
         {
-            _attackCompo = entity.GetCompo<PlayerAttackCompo>();
         }
 
         public override void Enter()
@@ -23,13 +21,13 @@ namespace _01Scripts.Players.States.UIInputStates
 
         private void HandleQTEPressed()
         {
-            // QTE 진행, QTE 끝나면 공격 컴포넌트에 공격 명령
-            _attackCompo.Attack();
+            // QTE 진행, QTE 끝나면 공격 컴포넌트에 공격 명령 -- 새 상태 만들었. 거따 전이.
+            _player.ChangeState("ATTACKMOTION");
         }
 
         public override void Exit()
         {
-            _player.PlayerBattleInput.OnQTEKeyPressed += HandleQTEPressed;
+            _player.PlayerBattleInput.OnQTEKeyPressed -= HandleQTEPressed;
             base.Exit();
         }
     }

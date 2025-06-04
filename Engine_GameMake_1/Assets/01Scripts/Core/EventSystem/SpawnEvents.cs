@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using _01Scripts.Entities;
+using UnityEngine;
 
 namespace _01Scripts.Core.EventSystem
 {
     public static class SpawnEvents
     {
         public static readonly SpawnAnimationEffect SpawnAnimationEffect = new SpawnAnimationEffect();
+        public static readonly SpawnEntityEvent SpawnEntityEvent = new SpawnEntityEvent();
     }
 
     public class SpawnAnimationEffect : GameEvent
@@ -25,5 +27,10 @@ namespace _01Scripts.Core.EventSystem
             this.effectColor = effectColor;
             return this;
         }
+    }
+
+    public class SpawnEntityEvent : GameEvent
+    {
+        public Entity Entity;
     }
 }

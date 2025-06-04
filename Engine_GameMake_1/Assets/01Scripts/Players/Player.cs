@@ -39,7 +39,7 @@ namespace _01Scripts.Players
         private void Start()
         {
             if(playerType == PlayerType.Search) _stateMachine.ChangeState("IDLE");
-            else if(playerType == PlayerType.Battle) _stateMachine.ChangeState("UISELECT");
+            // else if(playerType == PlayerType.Battle) _stateMachine.ChangeState("UISELECT");
         }
 
         private void Update()

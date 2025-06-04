@@ -90,16 +90,15 @@ namespace _01Scripts.Core.GameSystem
 
         private void RestoreData(string loadedJson)
         {
-            //해당 씬에서 데이터를 받아줄 오브젝트를 다 가져온다.
             IEnumerable<ISavable> savableObjects 
                 = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<ISavable>();
             
             DataCollection collection = string.IsNullOrEmpty(loadedJson) 
                 ? new DataCollection() : JsonUtility.FromJson<DataCollection>(loadedJson);
 
-            unUsedData.Clear(); //현재 가지고 있는 미사용데이터는 클리어.
+            unUsedData.Clear();
 
-            if (collection.dataList != null) //로드된 데이터가 존재한다면
+            if (collection.dataList != null)
             {
                 foreach (SaveData saveData in collection.dataList)
                 {
@@ -120,20 +119,5 @@ namespace _01Scripts.Core.GameSystem
         #endregion
 
 
-        #region Clear DebugCode
-
-        [ContextMenu("Clear Prefs data")]
-        private void ClearPrefs()
-        {
-            PlayerPrefs.DeleteKey(saveDataKey);
-        }
-
-        [ContextMenu("Clear file data")]
-        private void ClearFileData()
-        {
-            //나중에 처리할께.
-        }
-
-        #endregion
     }
 }

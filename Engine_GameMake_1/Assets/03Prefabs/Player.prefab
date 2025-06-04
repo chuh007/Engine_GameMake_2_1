@@ -2336,7 +2336,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23426450a002f934781e69d83e894018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerType: 0
   <PlayerInput>k__BackingField: {fileID: 11400000, guid: fb56afaad4c77b940b13e9d4bd04e44e, type: 2}
+  <PlayerBattleInput>k__BackingField: {fileID: 11400000, guid: bd7d166cb1e68de419dd8008e9420d90, type: 2}
   states:
   - {fileID: 11400000, guid: 6a4426dba371ca141a3f14fdc7abfe83, type: 2}
   - {fileID: 11400000, guid: 7134f2e2d9d7035458d94f48d2dddc68, type: 2}

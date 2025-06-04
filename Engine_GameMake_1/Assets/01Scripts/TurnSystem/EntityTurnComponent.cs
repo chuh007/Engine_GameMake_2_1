@@ -4,19 +4,18 @@ using UnityEngine;
 
 namespace _01Scripts.TurnSystem
 {
-    public class EntityTurnComponent : MonoBehaviour, IEntityComponent, ITurnActor
+    public abstract class EntityTurnComponent : MonoBehaviour, IEntityComponent, ITurnActor
     {
-        [SerializeField] private StatSO speedStat;
+        [SerializeField] protected StatSO speedStat;
         
-        
-        public void Initialize(Entity entity)
+        public virtual void Initialize(Entity entity)
         {
             Speed = (int)entity.GetCompo<EntityStat>().GetStat(speedStat).Value;
         }
 
         public int Speed { get; set; }
         public int ActionValue { get; set; } = 0;
-        public void TurnAction()
+        public virtual void TurnAction()
         {
             Debug.Log(transform.parent.name + "의 턴");
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using _01Scripts.Combat;
 using _01Scripts.Core.EventSystem;
 using _01Scripts.Entities;
 using Code.Core.GameSystem;
@@ -13,8 +14,7 @@ namespace _01Scripts.Players
 
         public int currentExp;
         public int level;
-        public int skillPoints;
-        public int gold;
+        public float health;
         
         private Player _player;
         
@@ -45,8 +45,7 @@ namespace _01Scripts.Players
         {
             public int currentExp;
             public int level;
-            public int skillPoints;
-            public int gold;
+            public float health;
             public List<EntityStat.StatSaveData> stats;
         }
         
@@ -55,7 +54,7 @@ namespace _01Scripts.Players
             
             PlayerSaveData data = new PlayerSaveData
             {
-                currentExp = currentExp, level = level, skillPoints = skillPoints, gold = gold,
+                currentExp = currentExp, level = level, health = health,
                 stats = _player.GetCompo<EntityStat>().GetSaveData()
             };
             return JsonUtility.ToJson(data);
@@ -64,10 +63,10 @@ namespace _01Scripts.Players
         public void RestoreData(string loadedData)
         {
             PlayerSaveData loadData = JsonUtility.FromJson<PlayerSaveData>(loadedData);
+            health = loadData.health;
+            _player.GetCompo<EntityHealthComponent>().RestoreHealth(health);
             currentExp = loadData.currentExp;
             level = loadData.level;
-            skillPoints = loadData.skillPoints;
-            gold = loadData.gold;
             
             if(loadData.stats != null)
                 _player.GetCompo<EntityStat>().RestoreData(loadData.stats);

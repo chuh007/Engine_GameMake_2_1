@@ -6,8 +6,13 @@ namespace _01Scripts.Players.States.UIInputStates
 {
     public class UIChoseTargetInputState : UIInputState
     {
+        private PlayerAttackCompo _attackCompo;
+        private PlayerTargetSelector _targetSelector;
+        
         public UIChoseTargetInputState(Entity entity, int animationHash) : base(entity, animationHash)
         {
+            _attackCompo = entity.GetCompo<PlayerAttackCompo>();
+            _targetSelector = entity.GetCompo<PlayerTargetSelector>();
         }
         
         public override void Enter()
@@ -21,6 +26,8 @@ namespace _01Scripts.Players.States.UIInputStates
         
         private void HandleSelectKeyPressed()
         {
+            Entity target = _targetSelector.CurrentTarget;
+            _attackCompo.SetTarget(target);
             _player.ChangeState("UIQTEINPUT");
         }
         
