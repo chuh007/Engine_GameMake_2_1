@@ -1,5 +1,4 @@
-﻿using _01Scripts.Combat;
-using _01Scripts.Core;
+﻿using _01Scripts.Core;
 using _01Scripts.Entities;
 using UnityEngine;
 

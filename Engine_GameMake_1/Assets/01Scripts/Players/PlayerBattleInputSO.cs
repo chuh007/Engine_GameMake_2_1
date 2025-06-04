@@ -21,7 +21,6 @@ namespace _01Scripts.Players
             if(_controls == null)
             {
                 _controls = new Controls();
-                _controls.BattlePlayer.SetCallbacks(this);
             }
             _controls.Enable();
             
@@ -34,14 +33,9 @@ namespace _01Scripts.Players
             _controls.UI.Disable();
         }
         
-        public void RemoveCallbacks()
-        {
-            _controls.BattlePlayer.Disable();
-        }
-        
         public void SetCallbacks()
         {
-            _controls.BattlePlayer.Enable();
+            _controls.BattlePlayer.SetCallbacks(this);
         }
         
         public void OnAttackQTE(InputAction.CallbackContext context)

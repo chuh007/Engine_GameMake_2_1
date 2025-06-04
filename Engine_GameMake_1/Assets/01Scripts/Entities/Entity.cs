@@ -16,7 +16,7 @@ namespace _01Scripts.Entities
         public event OnDamageHandler OnDamage;
 
         public UnityEvent OnHit;
-        public UnityEvent<Entity> OnDead;
+        public UnityEvent OnDead;
 
         public bool IsDead { get; set; }
 

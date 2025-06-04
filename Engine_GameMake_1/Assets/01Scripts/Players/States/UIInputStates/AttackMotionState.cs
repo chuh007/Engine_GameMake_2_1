@@ -1,5 +1,4 @@
-﻿using _01Scripts.Combat;
-using _01Scripts.Core;
+﻿using _01Scripts.Core;
 using _01Scripts.Core.EventSystem;
 using _01Scripts.Entities;
 using DG.Tweening;
@@ -31,7 +30,6 @@ namespace _01Scripts.Players.States.UIInputStates
             orginPos = _player.transform.position;
             PlayerUIInoutComponent.InputUIChanged(ControlUIType.UIBlockInput);
             _animTrigger.OnAttackTrigger += HandleAttackTrigger;
-            _animTrigger.OnAnimationEndTrigger += HandleAnimationEndTrigger;
             Vector3 targetPos = _targetSelector.CurrentTarget.transform.position;
             _player.transform.DOMove(targetPos - (targetPos - _player.transform.position).normalized, 0.25f).OnComplete(() =>
             {
@@ -42,10 +40,6 @@ namespace _01Scripts.Players.States.UIInputStates
         private void HandleAttackTrigger()
         {
             _attackCompo.Attack();
-        }
-
-        private void HandleAnimationEndTrigger()
-        {
             _player.ChangeState("UIBLOCK");
             _player.transform.DOMove(orginPos, 0.25f).OnComplete(() =>
             {
@@ -57,7 +51,6 @@ namespace _01Scripts.Players.States.UIInputStates
 
         public override void Exit()
         {
-            _animTrigger.OnAnimationEndTrigger -= HandleAnimationEndTrigger;
             _animTrigger.OnAttackTrigger -= HandleAttackTrigger;
             base.Exit();
         }

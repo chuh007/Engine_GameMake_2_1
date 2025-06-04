@@ -24,6 +24,7 @@ namespace _01Scripts.Combat
         
         public void AfterInitialize()
         {
+            Debug.Log("AfterInitialize");
             _statCompo.GetStat(hpStat).OnValueChanged += HandleHPChange;
             _currentHealth = maxHealth = _statCompo.GetStat(hpStat).Value;
             _entity.OnDamage += ApplyDamage;
@@ -44,7 +45,7 @@ namespace _01Scripts.Combat
         private void ApplyDamage(DamageData damageData, Entity dealer)
         {
             if (_entity.IsDead) return;
-            Debug.Log($"{damageData.damage} 받음. 남은 HP : {_currentHealth}");
+            Debug.Log(damageData.damage + "받음");
             _currentHealth = Mathf.Clamp(_currentHealth - damageData.damage, 0, maxHealth);
             _feedbackData.LastEntityWhoHit = dealer;
             AfterHitFeedbacks();
@@ -55,7 +56,7 @@ namespace _01Scripts.Combat
             _entity.OnHit?.Invoke();
             if (_currentHealth <= 0)
             {
-                _entity.OnDead?.Invoke(_entity);
+                _entity.OnDead?.Invoke();
             }
         }
 
