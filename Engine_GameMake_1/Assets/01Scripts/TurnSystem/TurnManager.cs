@@ -2,6 +2,7 @@
 using System.Linq;
 using _01Scripts.Core.EventSystem;
 using _01Scripts.Players;
+using DG.Tweening;
 using UnityEngine;
 
 namespace _01Scripts.TurnSystem
@@ -45,11 +46,8 @@ namespace _01Scripts.TurnSystem
         private void SelectNextTurn()
         {
             if (_actionOrders.Count <= 0) FillTurnQueue();
-            foreach (var actor in _actionOrders)
-            {
-                Debug.Log((actor as EntityTurnComponent) + actor.Speed.ToString());
-            }
-            _actionOrders.Dequeue().TurnAction();
+            // _actionOrders.Dequeue().TurnAction();
+            DOVirtual.DelayedCall(0.5f, () => _actionOrders.Dequeue().TurnAction());
         }
 
         private void FillTurnQueue()

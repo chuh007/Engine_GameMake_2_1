@@ -1,14 +1,9 @@
-using _01Scripts.Combat;
 using _01Scripts.Entities;
 using UnityEngine;
 
-namespace _01Scripts.Players
+namespace _01Scripts.Combat
 {
-    public struct DamageData
-    {
-        public float damage;
-    }
-    
+
     public class PlayerAttackCompo : EntityAttackCompo
     {
         public void SetTarget(Entity target)
@@ -21,6 +16,7 @@ namespace _01Scripts.Players
             base.Attack();
             DamageData data = new DamageData();
             data.damage = _damage;
+            Debug.Log("플레이어의 공격");
             _target.ApplyDamage(data, _entity);
         }
 

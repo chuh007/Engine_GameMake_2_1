@@ -16,16 +16,24 @@ namespace _01Scripts.Interact
         
         public string Name { get; private set; }
         
+        
+        private Player _player;
 
         private void Awake()
         {
             Name = "???";
+            _player = playerFinder.Target as Player;
+        }
+
+        private void Update()
+        {
+            
         }
 
         public void Interact()
         {
             Debug.Log("유령발견ㄴㄴㄴㄴㄴㄴㄴ");
-            playerFinder.Target.GetCompo<CharacterMovement>().CanManualMovement = false;
+            _player.GetCompo<CharacterMovement>().CanManualMovement = false;
                 
             uiChannel.AddListener<FadeCompleteEvent>(HandleFadeComplete);
             StartCoroutine(GotoBattle());
@@ -43,7 +51,7 @@ namespace _01Scripts.Interact
 
         private void HandleFadeComplete(FadeCompleteEvent obj)
         {
-            uiChannel.RemoveListener<FadeCompleteEvent>(HandleFadeComplete); //이벤트 제거후 씬변환.
+            uiChannel.RemoveListener<FadeCompleteEvent>(HandleFadeComplete);
             SceneManager.LoadScene("BattleScene");
         }
     }

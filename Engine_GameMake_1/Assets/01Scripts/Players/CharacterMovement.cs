@@ -12,7 +12,7 @@ namespace _01Scripts.Players
         [SerializeField] private Transform parent;
         
         private float _moveSpeed = 3f;
-        private float _runMoveSpeedMultiply = 2.5f;
+        private float _runMoveSpeedMultiply = 3f;
         private bool _isRunning = false;
 
         public bool IsRunning
@@ -71,7 +71,7 @@ namespace _01Scripts.Players
             {
                 _velocity = parent.transform.rotation * _movementDirection;
                 if(_isRunning) _velocity *= _runMoveSpeedMultiply;
-                _velocity *= _moveSpeed * Time.fixedDeltaTime;
+                _velocity *= _moveSpeed * 0.05f * Time.fixedDeltaTime;
             }
             else
             {

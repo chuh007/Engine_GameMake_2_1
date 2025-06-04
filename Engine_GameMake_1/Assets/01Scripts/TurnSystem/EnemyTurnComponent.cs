@@ -17,7 +17,7 @@ namespace _01Scripts.TurnSystem
         public override void TurnAction()
         {
             base.TurnAction();
-            
+            _player.ChangeState("MOVEATTACK");
         }
     }
 }

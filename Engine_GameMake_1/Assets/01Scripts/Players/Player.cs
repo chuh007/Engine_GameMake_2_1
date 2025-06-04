@@ -28,8 +28,16 @@ namespace _01Scripts.Players
         {
             base.Awake();
             _stateMachine = new EntityStateMachine(this, states);
-            if(playerType == PlayerType.Search) PlayerInput.SetCallbacks();
-            else if(playerType == PlayerType.Battle) PlayerBattleInput.SetCallbacks();
+            if (playerType == PlayerType.Search)
+            {
+                PlayerInput.SetCallbacks();
+                PlayerBattleInput.RemoveCallbacks();
+            }
+            else if (playerType == PlayerType.Battle)
+            {
+                PlayerInput.RemoveCallbacks();
+                PlayerBattleInput.SetCallbacks();
+            }
         }
 
         private void OnDisable()
@@ -39,7 +47,6 @@ namespace _01Scripts.Players
         private void Start()
         {
             if(playerType == PlayerType.Search) _stateMachine.ChangeState("IDLE");
-            // else if(playerType == PlayerType.Battle) _stateMachine.ChangeState("UISELECT");
         }
 
         private void Update()

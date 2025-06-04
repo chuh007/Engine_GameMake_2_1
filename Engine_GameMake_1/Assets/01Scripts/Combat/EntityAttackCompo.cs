@@ -5,6 +5,11 @@ using UnityEngine;
 
 namespace _01Scripts.Combat
 {
+    public struct DamageData
+    {
+        public float damage;
+    }
+
     public abstract class EntityAttackCompo : MonoBehaviour, IEntityComponent
     {
         [SerializeField] protected StatSO damageStat;

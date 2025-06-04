@@ -36,9 +36,14 @@ namespace _01Scripts.Players
             _controls.UI.Disable();
         }
 
+        public void RemoveCallbacks()
+        {
+            _controls.Player.Disable();
+        }
+        
         public void SetCallbacks()
         {
-            _controls.Player.SetCallbacks(this);
+            _controls.Player.Enable();
         }
         
         public void OnMove(InputAction.CallbackContext context)
@@ -64,18 +69,6 @@ namespace _01Scripts.Players
             if(context.performed)
                 OnInteractPressed?.Invoke();
         }
-
-
-        public Vector3 GetWorldPosition()
-        {
-            Camera mainCam = Camera.main;
-            Debug.Assert(mainCam != null,"No main camera");
-            Ray camRay = mainCam.ScreenPointToRay(_screenPosition);
-            if (Physics.Raycast(camRay, out RaycastHit hit, mainCam.farClipPlane, whatIsGround))
-            {
-                _worldPosition = hit.point;
-            }
-            return _worldPosition;
-        }
+        
     }
 }
