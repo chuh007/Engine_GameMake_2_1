@@ -11,6 +11,7 @@ namespace _01Scripts.Players
         [SerializeField] private LayerMask whatIsTarget;
         
         private Player _player;
+        private GameObject _targetObj;
         private IInteractable _target;
         private string _targetName;
         
@@ -24,11 +25,16 @@ namespace _01Scripts.Players
             Physics.Raycast(cameraTrm.position, cameraTrm.forward, out RaycastHit hit, 3f, whatIsTarget);
             if (hit.transform == null)
             {
+                if(_targetObj != null)
+                    _targetObj.layer = LayerMask.NameToLayer("InteractObject");
+                _targetObj = null;
                 _target = null;
                 return;
             }
             if (hit.transform.TryGetComponent(out IInteractable interactable))
             {
+                _targetObj = hit.transform.gameObject;
+                _targetObj.layer = LayerMask.NameToLayer("Outlined");
                 _target = interactable;
                 _targetName = interactable.Name;
             }

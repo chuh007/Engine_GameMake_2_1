@@ -1771,7 +1771,10 @@ MonoBehaviour:
   cameraTrm: {fileID: 1515836924788605547}
   whatIsTarget:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1536
+  whatIsOutline:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &1985399251016071317
 GameObject:
   m_ObjectHideFlags: 0
@@ -2336,6 +2339,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23426450a002f934781e69d83e894018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <TurnChannel>k__BackingField: {fileID: 0}
+  OnHit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDead:
+    m_PersistentCalls:
+      m_Calls: []
   playerType: 0
   <PlayerInput>k__BackingField: {fileID: 11400000, guid: fb56afaad4c77b940b13e9d4bd04e44e, type: 2}
   <PlayerBattleInput>k__BackingField: {fileID: 11400000, guid: bd7d166cb1e68de419dd8008e9420d90, type: 2}
