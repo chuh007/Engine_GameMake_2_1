@@ -1,18 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e350d74d598a4719b4e933659d4db1fe, type: 3}
-  m_Name: EnemySaveId
-  m_EditorClassIdentifier: 
-  saveID: 2
-  saveName: EnemyData
-  description: "\uC801\uC758 \uB370\uC774\uD130\uB97C \uC800\uC7A5\uD574\uB450\uB294
-    \uC138\uC774\uBE0C \uC544\uC774\uB514"
+version https://git-lfs.github.com/spec/v1
+oid sha256:0028b34bb32beda0e7abca16e66f617517336a2cb751b0ec5e40b96b37ed831c
+size 562

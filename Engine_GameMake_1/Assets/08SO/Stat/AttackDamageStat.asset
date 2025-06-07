@@ -1,22 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d69c4243f00b4b6c9c1dbc2beae3cfd2, type: 3}
-  m_Name: AttackDamageStat
-  m_EditorClassIdentifier: 
-  statName: AttackDamage
-  description: "\uACF5\uACA9 \uB370\uBBF8\uC9C0"
-  icon: {fileID: 0}
-  displayName: ATK
-  baseValue: 20
-  minValue: 1
-  maxValue: 9999
-  <IsPercent>k__BackingField: 0
+version https://git-lfs.github.com/spec/v1
+oid sha256:859c5679bd9f8edfb817f207d09a7793a4d8cdc8a6354cbd6d890dd77e1edd8a
+size 597

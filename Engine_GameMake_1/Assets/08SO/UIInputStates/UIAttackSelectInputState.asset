@@ -1,18 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea9c108b1573364a8483e3ad7715d8f, type: 3}
-  m_Name: UIAttackSelectInputState
-  m_EditorClassIdentifier: 
-  stateName: UIATTACKSELECT
-  className: _01Scripts.Players.States.UIInputStates.UIAttackSelectInputState
-  animParamName: ATTACKSELECT
-  aniamtionHash: -1967863224
+version https://git-lfs.github.com/spec/v1
+oid sha256:eb357e9b8caad62e7749bd00b9d838244be614f5f262b584ba501e8ba8a233aa
+size 596
