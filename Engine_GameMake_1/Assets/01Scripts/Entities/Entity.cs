@@ -32,6 +32,8 @@ namespace _01Scripts.Entities
             AfterInitialize();
         }
 
+        
+        
         private void AddComponents()
         {
             GetComponentsInChildren<IEntityComponent>().ToList()
@@ -44,7 +46,20 @@ namespace _01Scripts.Entities
         }
 
         protected virtual void AfterInitialize()
-            => _components.Values.OfType<IAfterInitialize>().ToList().ForEach(compo => compo.AfterInitialize());
+        {
+            _components.Values.OfType<IAfterInitialize>().ToList().ForEach(compo => compo.AfterInitialize());
+            OnHit.AddListener(HandleHit);
+            OnDead.AddListener(HandleDead);
+        }
+        
+        protected virtual void OnDestroy()
+        {
+            OnHit.RemoveListener(HandleHit);
+            OnDead.RemoveListener(HandleDead);
+        }
+        
+        protected abstract void HandleHit();
+        protected abstract void HandleDead(Entity entity);
         
         public T GetCompo<T>(bool isDerived = false) where T : IEntityComponent
         {

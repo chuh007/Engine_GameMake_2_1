@@ -40,6 +40,16 @@ namespace _01Scripts.Players
             }
         }
 
+        protected override void HandleHit()
+        {
+            
+        }
+
+        protected override void HandleDead(Entity entity)
+        {
+            
+        }
+
         private void OnDisable()
         {
         }

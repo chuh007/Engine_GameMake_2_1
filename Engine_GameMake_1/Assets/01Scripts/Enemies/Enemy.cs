@@ -27,6 +27,18 @@ namespace _01Scripts.Enemies
             _stateMachine = new EntityStateMachine(this, states);
         }
 
+        protected override void HandleHit()
+        {
+            _stateMachine.ChangeState("HIT");
+            
+        }
+
+        protected override void HandleDead(Entity entity)
+        {
+            IsDead = true;
+            _stateMachine.ChangeState("DEAD");
+        }
+
         public void SpawnEventRaise()
         {
             var evt = SpawnEvents.SpawnEntityEvent;

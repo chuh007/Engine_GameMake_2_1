@@ -6,18 +6,19 @@ namespace _01Scripts.TurnSystem
 {
     public class EnemyTurnComponent : EntityTurnComponent
     {
-        private Enemy _player;
+        private Enemy _enemy;
         
         public override void Initialize(Entity entity)
         {
             base.Initialize(entity);
-            _player = entity as Enemy;
+            _enemy = entity as Enemy;
         }
 
         public override void TurnAction()
         {
+            if(_enemy.IsDead) return;
             base.TurnAction();
-            _player.ChangeState("MOVEATTACK");
+            _enemy.ChangeState("MOVEATTACK");
         }
     }
 }

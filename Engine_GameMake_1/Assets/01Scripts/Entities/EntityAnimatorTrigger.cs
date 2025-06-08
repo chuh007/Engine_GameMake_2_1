@@ -8,6 +8,7 @@ namespace _01Scripts.Entities
         public Action OnAnimationEndTrigger;
         public Action OnAnimationEventTrigger;
         public Action OnAttackTrigger;
+        public Action OnAttackEffectTrigger;
         
         private Entity _entity;
         
@@ -24,6 +25,11 @@ namespace _01Scripts.Entities
         private void AttackTrigger()
         {
             OnAttackTrigger?.Invoke();
+        }
+        
+        private void AttackEffectTrigger()
+        {
+            OnAttackEffectTrigger?.Invoke();
         }
     }
 }

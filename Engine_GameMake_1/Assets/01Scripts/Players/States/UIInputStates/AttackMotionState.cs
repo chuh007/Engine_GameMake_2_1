@@ -11,6 +11,7 @@ namespace _01Scripts.Players.States.UIInputStates
     {
         private PlayerAttackCompo _attackCompo;
         private PlayerTargetSelector _targetSelector;
+        private PlayerCamShaker _shaker;
         private EntityAnimator _animator;
         private EntityAnimatorTrigger _animTrigger;
         
@@ -22,6 +23,7 @@ namespace _01Scripts.Players.States.UIInputStates
             _targetSelector = entity.GetCompo<PlayerTargetSelector>();
             _animator = entity.GetCompo<EntityAnimator>();
             _animTrigger = entity.GetCompo<EntityAnimatorTrigger>();
+            _shaker = entity.GetCompo<PlayerCamShaker>();
         }
 
         public override void Enter()
@@ -40,6 +42,7 @@ namespace _01Scripts.Players.States.UIInputStates
 
         private void HandleAttackTrigger()
         {
+            _shaker.ShakeCam();
             _attackCompo.Attack();
         }
 
