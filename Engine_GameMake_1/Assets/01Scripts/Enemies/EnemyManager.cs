@@ -9,6 +9,7 @@ using UnityEngine.Serialization;
 
 namespace _01Scripts.Enemies
 {
+    [DefaultExecutionOrder(-1)]
     public class EnemyManager : MonoBehaviour
     {
         [SerializeField] private GameEventChannelSO spawnChannel;
@@ -46,6 +47,7 @@ namespace _01Scripts.Enemies
         
         private IEnumerator GotoBattle()
         {
+            yield return new WaitForSeconds(1f);
             FadeEvent fadeEvt = UIEvents.FadeEvent;
             fadeEvt.isFadeIn = false;
             fadeEvt.fadeTime = 0.5f;

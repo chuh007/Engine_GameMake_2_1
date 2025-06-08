@@ -14,8 +14,7 @@ namespace _01Scripts.Players.States.UIInputStates
         private EntityAnimator _animator;
         private EntityAnimatorTrigger _animTrigger;
         
-        private readonly int _attackAnimationHash = Animator.StringToHash("ATTACK");
-        private Vector3 orginPos;
+        private Vector3 _orginPos;
         
         public AttackMotionState(Entity entity, int animationHash) : base(entity, animationHash)
         {
@@ -28,14 +27,14 @@ namespace _01Scripts.Players.States.UIInputStates
         public override void Enter()
         {
             base.Enter();
-            orginPos = _player.transform.position;
+            _orginPos = _player.transform.position;
             PlayerUIInoutComponent.InputUIChanged(ControlUIType.UIBlockInput);
             _animTrigger.OnAttackTrigger += HandleAttackTrigger;
             _animTrigger.OnAnimationEndTrigger += HandleAnimationEndTrigger;
             Vector3 targetPos = _targetSelector.CurrentTarget.transform.position;
             _player.transform.DOMove(targetPos - (targetPos - _player.transform.position).normalized, 0.25f).OnComplete(() =>
             {
-                _animator.SetParam(_attackAnimationHash);
+                _animator.SetParam(Animator.StringToHash(_attackCompo.currentAttackData.attackAnimationName));
             });
         }
 
@@ -47,7 +46,7 @@ namespace _01Scripts.Players.States.UIInputStates
         private void HandleAnimationEndTrigger()
         {
             _player.ChangeState("UIBLOCK");
-            _player.transform.DOMove(orginPos, 0.25f).OnComplete(() =>
+            _player.transform.DOMove(_orginPos, 0.25f).OnComplete(() =>
             {
                 TurnEndEvent evt = TurnEvents.TurnEndEvent;
                 _player.TurnChannel.RaiseEvent(evt);

@@ -15,10 +15,12 @@ namespace _01Scripts.Entities
         public delegate void OnDamageHandler(DamageData damage, Entity dealer);
         public event OnDamageHandler OnDamage;
 
+        public UnityEvent OnDefense;
         public UnityEvent OnHit;
         public UnityEvent<Entity> OnDead;
 
         public bool IsDead { get; set; }
+        public bool IsDefense { get; set; }
 
         protected Dictionary<Type, IEntityComponent> _components;
 
@@ -60,6 +62,16 @@ namespace _01Scripts.Entities
 
         public void ApplyDamage(DamageData damage, Entity dealer)
             => OnDamage?.Invoke(damage, dealer);
+
+        public bool TryCastDamage()
+        {
+            if (IsDefense)
+            {
+                OnDefense?.Invoke();
+                return false;
+            }
+            return true;
+        }
     }
 }
 

@@ -12,7 +12,9 @@ namespace _01Scripts.Players
         public event Action OnBlockKeyPressed;
         public event Action OnItemKeyPressed;
         public event Action OnCancelOrESCKeyPressed;
-        public event Action OnSelectKeyPressed;
+        public event Action OnSelect1KeyPressed;
+        public event Action OnSelect2KeyPressed;
+        public event Action OnSelect3KeyPressed;
 
         private Controls _controls;
 
@@ -56,10 +58,22 @@ namespace _01Scripts.Players
                 OnBlockKeyPressed?.Invoke();
         }
 
-        public void OnSelect(InputAction.CallbackContext context)
+        public void OnSelect1(InputAction.CallbackContext context)
         {
             if(context.performed)
-                OnSelectKeyPressed?.Invoke();
+                OnSelect1KeyPressed?.Invoke();
+        }
+
+        public void OnSelect2(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+                OnSelect2KeyPressed?.Invoke();
+        }
+
+        public void OnSelect3(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+                OnSelect3KeyPressed?.Invoke();
         }
 
         public void OnAttack(InputAction.CallbackContext context)

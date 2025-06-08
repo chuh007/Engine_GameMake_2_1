@@ -330,9 +330,27 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Select"",
+                    ""name"": ""Select1"",
+                    ""type"": ""Button"",
+                    ""id"": ""2e062dd6-6459-4633-8013-5808710bdcc4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select2"",
                     ""type"": ""Button"",
                     ""id"": ""aff9001c-f7af-4add-a4b4-7cf13fa9a1a7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select3"",
+                    ""type"": ""Button"",
+                    ""id"": ""6696cab7-b472-42bc-9c75-8e4da55dfc68"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -405,7 +423,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Select"",
+                    ""action"": ""Select2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -450,6 +468,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""CancelOrESC"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0a08fad6-3386-4c18-a88a-7a9f7d0a4ef0"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b259821-c2ad-49be-b1da-05cce0dba26e"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1045,7 +1085,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_BattlePlayer = asset.FindActionMap("BattlePlayer", throwIfNotFound: true);
         m_BattlePlayer_AttackQTE = m_BattlePlayer.FindAction("AttackQTE", throwIfNotFound: true);
         m_BattlePlayer_Block = m_BattlePlayer.FindAction("Block", throwIfNotFound: true);
-        m_BattlePlayer_Select = m_BattlePlayer.FindAction("Select", throwIfNotFound: true);
+        m_BattlePlayer_Select1 = m_BattlePlayer.FindAction("Select1", throwIfNotFound: true);
+        m_BattlePlayer_Select2 = m_BattlePlayer.FindAction("Select2", throwIfNotFound: true);
+        m_BattlePlayer_Select3 = m_BattlePlayer.FindAction("Select3", throwIfNotFound: true);
         m_BattlePlayer_Attack = m_BattlePlayer.FindAction("Attack", throwIfNotFound: true);
         m_BattlePlayer_Mouse = m_BattlePlayer.FindAction("Mouse", throwIfNotFound: true);
         m_BattlePlayer_Item = m_BattlePlayer.FindAction("Item", throwIfNotFound: true);
@@ -1275,7 +1317,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private List<IBattlePlayerActions> m_BattlePlayerActionsCallbackInterfaces = new List<IBattlePlayerActions>();
     private readonly InputAction m_BattlePlayer_AttackQTE;
     private readonly InputAction m_BattlePlayer_Block;
-    private readonly InputAction m_BattlePlayer_Select;
+    private readonly InputAction m_BattlePlayer_Select1;
+    private readonly InputAction m_BattlePlayer_Select2;
+    private readonly InputAction m_BattlePlayer_Select3;
     private readonly InputAction m_BattlePlayer_Attack;
     private readonly InputAction m_BattlePlayer_Mouse;
     private readonly InputAction m_BattlePlayer_Item;
@@ -1300,9 +1344,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Block => m_Wrapper.m_BattlePlayer_Block;
         /// <summary>
-        /// Provides access to the underlying input action "BattlePlayer/Select".
+        /// Provides access to the underlying input action "BattlePlayer/Select1".
         /// </summary>
-        public InputAction @Select => m_Wrapper.m_BattlePlayer_Select;
+        public InputAction @Select1 => m_Wrapper.m_BattlePlayer_Select1;
+        /// <summary>
+        /// Provides access to the underlying input action "BattlePlayer/Select2".
+        /// </summary>
+        public InputAction @Select2 => m_Wrapper.m_BattlePlayer_Select2;
+        /// <summary>
+        /// Provides access to the underlying input action "BattlePlayer/Select3".
+        /// </summary>
+        public InputAction @Select3 => m_Wrapper.m_BattlePlayer_Select3;
         /// <summary>
         /// Provides access to the underlying input action "BattlePlayer/Attack".
         /// </summary>
@@ -1351,9 +1403,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Block.started += instance.OnBlock;
             @Block.performed += instance.OnBlock;
             @Block.canceled += instance.OnBlock;
-            @Select.started += instance.OnSelect;
-            @Select.performed += instance.OnSelect;
-            @Select.canceled += instance.OnSelect;
+            @Select1.started += instance.OnSelect1;
+            @Select1.performed += instance.OnSelect1;
+            @Select1.canceled += instance.OnSelect1;
+            @Select2.started += instance.OnSelect2;
+            @Select2.performed += instance.OnSelect2;
+            @Select2.canceled += instance.OnSelect2;
+            @Select3.started += instance.OnSelect3;
+            @Select3.performed += instance.OnSelect3;
+            @Select3.canceled += instance.OnSelect3;
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
@@ -1383,9 +1441,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Block.started -= instance.OnBlock;
             @Block.performed -= instance.OnBlock;
             @Block.canceled -= instance.OnBlock;
-            @Select.started -= instance.OnSelect;
-            @Select.performed -= instance.OnSelect;
-            @Select.canceled -= instance.OnSelect;
+            @Select1.started -= instance.OnSelect1;
+            @Select1.performed -= instance.OnSelect1;
+            @Select1.canceled -= instance.OnSelect1;
+            @Select2.started -= instance.OnSelect2;
+            @Select2.performed -= instance.OnSelect2;
+            @Select2.canceled -= instance.OnSelect2;
+            @Select3.started -= instance.OnSelect3;
+            @Select3.performed -= instance.OnSelect3;
+            @Select3.canceled -= instance.OnSelect3;
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
@@ -1749,12 +1813,26 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnBlock(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Select" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Select1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnSelect(InputAction.CallbackContext context);
+        void OnSelect1(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Select2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSelect2(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Select3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSelect3(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Attack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

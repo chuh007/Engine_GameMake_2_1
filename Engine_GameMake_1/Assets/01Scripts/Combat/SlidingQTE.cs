@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using DG.Tweening;
+using TMPro;
 
 namespace QTESystem
 {
@@ -33,6 +34,7 @@ namespace QTESystem
         [SerializeField] private Image input;
         [SerializeField] private RectTransform failure;
         [SerializeField] private Image success;
+        [SerializeField] private TextMeshProUGUI text;
 
         [Header("Sprites")]
         [SerializeField] private Sprite successSprite;
@@ -127,9 +129,9 @@ namespace QTESystem
             float xPos = input.rectTransform.anchoredPosition.x;
 
             if (showSuccess && InsideSuccess(xPos))
-                input.color = Color.green;
-            else
                 input.color = Color.white;
+            else
+                input.color = Color.gray;
         }
 
         public void HandleQTEPressed()
@@ -154,7 +156,9 @@ namespace QTESystem
             state = QTEState.Success;
             movementTween?.Kill();
             if (input) input.sprite = successSprite;
+            text.text = "Success";
             CleanUp();
+            slidingQTECanvas.SetActive(false);
             onSuccess.Invoke();
         }
 
@@ -163,7 +167,9 @@ namespace QTESystem
             state = QTEState.Failed;
             movementTween?.Kill();
             if (input) input.sprite = failureSprite;
+            text.text = "Fail";
             CleanUp();
+            slidingQTECanvas.SetActive(false);
             onFailure.Invoke();
         }
 

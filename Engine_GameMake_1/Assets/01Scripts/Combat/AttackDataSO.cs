@@ -10,9 +10,10 @@ namespace _01Scripts.Combat
         public float damageMultiplier = 1f;
         public float damageIncrease = 0;
 
-        public AnimationClip attackAnimation;
+        public string attackAnimationName;
         public PlayParticleVFX particle;
         public int triggerCount;
+        public int cost;
         
         private void OnEnable()
         {

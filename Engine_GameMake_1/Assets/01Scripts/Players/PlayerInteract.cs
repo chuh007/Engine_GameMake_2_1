@@ -1,6 +1,7 @@
 ﻿using System;
 using _01Scripts.Entities;
 using _01Scripts.Interact;
+using TMPro;
 using UnityEngine;
 
 namespace _01Scripts.Players
@@ -9,6 +10,7 @@ namespace _01Scripts.Players
     {
         [SerializeField] private Transform cameraTrm;
         [SerializeField] private LayerMask whatIsTarget;
+        [SerializeField] private TextMeshProUGUI nameText;
         
         private Player _player;
         private GameObject _targetObj;
@@ -27,6 +29,7 @@ namespace _01Scripts.Players
             {
                 if(_targetObj != null)
                     _targetObj.layer = LayerMask.NameToLayer("InteractObject");
+                nameText.gameObject.SetActive(false);
                 _targetObj = null;
                 _target = null;
                 return;
@@ -37,6 +40,8 @@ namespace _01Scripts.Players
                 _targetObj.layer = LayerMask.NameToLayer("Outlined");
                 _target = interactable;
                 _targetName = interactable.Name;
+                nameText.gameObject.SetActive(true);
+                nameText.text = _targetName;
             }
         }
 

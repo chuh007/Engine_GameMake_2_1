@@ -9,10 +9,14 @@ namespace _01Scripts.Players.States.UIInputStates
     public class UIQTEInputState : UIInputState
     {
         private SlidingQTE _qteCompo;
+        private PlayerAttackCompo _playerAttackCompo;
+
+        private int _triggerdCount = 0;
         
         public UIQTEInputState(Entity entity, int animationHash) : base(entity, animationHash)
         {
             _qteCompo = _player.GetCompo<SlidingQTE>();
+            _playerAttackCompo = _player.GetCompo<PlayerAttackCompo>();
         }
 
         public override void Enter()
@@ -22,11 +26,19 @@ namespace _01Scripts.Players.States.UIInputStates
             _player.PlayerBattleInput.OnQTEKeyPressed += HandleQTEPressed;
             _qteCompo.onSuccess.AddListener(HandleSuccess);
             _qteCompo.onFailure.AddListener(HandleFailure);
+            _triggerdCount = 0;
             _qteCompo.BeginQTE();
         }
 
         private void HandleSuccess()
         {
+            _playerAttackCompo.QteSuccess();
+            if (_triggerdCount < _playerAttackCompo.currentAttackData.triggerCount - 1)
+            {
+                _triggerdCount++;
+                _qteCompo.BeginQTE();
+                return;
+            }
             _player.ChangeState("ATTACKMOTION");
         }
         
@@ -37,14 +49,14 @@ namespace _01Scripts.Players.States.UIInputStates
 
         private void HandleQTEPressed()
         {
-            // QTE 진행, QTE 끝나면 공격 컴포넌트에 공격 명령 -- 새 상태 만들었. 거따 전이.
             _qteCompo.HandleQTEPressed();
-            // _player.ChangeState("ATTACKMOTION");
         }
 
         public override void Exit()
         {
             _player.PlayerBattleInput.OnQTEKeyPressed -= HandleQTEPressed;
+            _qteCompo.onSuccess.RemoveListener(HandleSuccess);
+            _qteCompo.onFailure.RemoveListener(HandleFailure);
             base.Exit();
         }
     }

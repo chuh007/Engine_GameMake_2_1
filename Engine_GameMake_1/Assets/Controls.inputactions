@@ -244,9 +244,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Select",
+                    "name": "Select1",
+                    "type": "Button",
+                    "id": "2e062dd6-6459-4633-8013-5808710bdcc4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Select2",
                     "type": "Button",
                     "id": "aff9001c-f7af-4add-a4b4-7cf13fa9a1a7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Select3",
+                    "type": "Button",
+                    "id": "6696cab7-b472-42bc-9c75-8e4da55dfc68",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -319,7 +337,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Select",
+                    "action": "Select2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -364,6 +382,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "CancelOrESC",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0a08fad6-3386-4c18-a88a-7a9f7d0a4ef0",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3b259821-c2ad-49be-b1da-05cce0dba26e",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

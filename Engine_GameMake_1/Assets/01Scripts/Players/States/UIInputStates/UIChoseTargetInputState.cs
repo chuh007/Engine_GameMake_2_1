@@ -9,26 +9,29 @@ namespace _01Scripts.Players.States.UIInputStates
     {
         private PlayerAttackCompo _attackCompo;
         private PlayerTargetSelector _targetSelector;
+        private PlayerCostCompo _costCompo;
         
         public UIChoseTargetInputState(Entity entity, int animationHash) : base(entity, animationHash)
         {
             _attackCompo = entity.GetCompo<PlayerAttackCompo>();
             _targetSelector = entity.GetCompo<PlayerTargetSelector>();
+            _costCompo = entity.GetCompo<PlayerCostCompo>();
         }
         
         public override void Enter()
         {
             base.Enter();
             _player.PlayerBattleInput.OnCancelOrESCKeyPressed += HandleCancelOrEscKeyPressed;
-            _player.PlayerBattleInput.OnSelectKeyPressed += HandleSelectKeyPressed;
+            _player.PlayerBattleInput.OnSelect2KeyPressed += HandleSelectTarget;
             PlayerUIInoutComponent.InputUIChanged(ControlUIType.UIChoseTarget);
         }
 
         
-        private void HandleSelectKeyPressed()
+        private void HandleSelectTarget()
         {
             Entity target = _targetSelector.CurrentTarget;
             _attackCompo.SetTarget(target);
+            _costCompo.SpendCost(_attackCompo.currentAttackData.cost);
             _player.ChangeState("UIQTEINPUT");
         }
         
@@ -40,7 +43,7 @@ namespace _01Scripts.Players.States.UIInputStates
         public override void Exit()
         {
             _player.PlayerBattleInput.OnCancelOrESCKeyPressed -= HandleCancelOrEscKeyPressed;
-            _player.PlayerBattleInput.OnSelectKeyPressed -= HandleSelectKeyPressed;
+            _player.PlayerBattleInput.OnSelect2KeyPressed -= HandleSelectTarget;
             base.Exit();
         }
     }

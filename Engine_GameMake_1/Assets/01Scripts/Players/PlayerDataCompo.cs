@@ -17,16 +17,26 @@ namespace _01Scripts.Players
         public float health;
         
         private Player _player;
+        private EntityHealthComponent _healthComponent;
         
         public void Initialize(Entity entity)
         {
             _player = entity as Player;
+            _healthComponent = _player.GetCompo<EntityHealthComponent>();
             playerChannel.AddListener<AddEXPEvent>(HandleAddExp);
+            _healthComponent.currentHpValueChangeEvent.AddListener(HandleHpChange);
         }
 
         private void OnDestroy()
         {
+            _healthComponent.currentHpValueChangeEvent.RemoveListener(HandleHpChange);
             playerChannel.RemoveListener<AddEXPEvent>(HandleAddExp);
+        }
+
+        private void HandleHpChange(float value)
+        {
+            Debug.Log(value);
+            health = value;
         }
 
         private void HandleAddExp(AddEXPEvent addExpEvt) => AddExp(addExpEvt.exp);
@@ -64,10 +74,11 @@ namespace _01Scripts.Players
         {
             PlayerSaveData loadData = JsonUtility.FromJson<PlayerSaveData>(loadedData);
             health = loadData.health;
+            if(health == 0) health = _healthComponent.maxHealth;
             _player.GetCompo<EntityHealthComponent>().RestoreHealth(health);
             currentExp = loadData.currentExp;
             level = loadData.level;
-            
+
             if(loadData.stats != null)
                 _player.GetCompo<EntityStat>().RestoreData(loadData.stats);
         }
