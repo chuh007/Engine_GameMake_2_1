@@ -59,8 +59,6 @@ namespace _01Scripts.Players
             IEnumerable<InventoryItem> items = GetItems(itemData);
             InventoryItem canAddItem = items.FirstOrDefault(item => item.IsFullStack == false);
 
-            Debug.Log(canAddItem);
-            Debug.Log(inventory.Count);
             if (canAddItem == default)
             {
                 Debug.Log("새로운 칸에 넣다");
@@ -79,7 +77,6 @@ namespace _01Scripts.Players
         
         private void CreateNewInventory(ItemDataSO itemData, int count)
         {
-            Debug.Log("Creating new inventory");
             InventoryItem newItem = new InventoryItem(itemData, count);
             inventory.Add(newItem);
         }
@@ -176,12 +173,6 @@ namespace _01Scripts.Players
                 
                 return new InventoryItem(itemData, saveItem.stackSize);
             }).ToList();
-            Debug.Log(inventory.Count);
-            foreach (var item in inventory)
-            {
-                Debug.Log(item.data.itemName);
-                Debug.Log(item.stackSize);
-            }
         }
 
         #endregion

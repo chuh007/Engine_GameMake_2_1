@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿using _01Scripts.Entities;
+using Chuh007Lib.StatSystem;
+using UnityEditor;
 using UnityEngine;
 
 namespace _01Scripts.Items

@@ -131,7 +131,7 @@ namespace QTESystem
             if (showSuccess && InsideSuccess(xPos))
                 input.color = Color.white;
             else
-                input.color = Color.gray;
+                input.color = Color.white;
         }
 
         public void HandleQTEPressed()

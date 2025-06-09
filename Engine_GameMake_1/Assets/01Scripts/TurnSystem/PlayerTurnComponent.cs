@@ -12,6 +12,7 @@ namespace _01Scripts.TurnSystem
         {
             base.Initialize(entity);
             _player = entity as Player;
+            Name = "플레이어";
         }
 
         public override void TurnAction()

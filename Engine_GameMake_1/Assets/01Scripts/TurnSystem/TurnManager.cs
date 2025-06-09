@@ -2,19 +2,21 @@
 using System.Linq;
 using _01Scripts.Core.EventSystem;
 using _01Scripts.Players;
+using Chuh007Lib.Dependencies;
 using DG.Tweening;
 using UnityEngine;
 
 namespace _01Scripts.TurnSystem
 {
-    public class TurnManager : MonoBehaviour
+    [Provide]
+    public class TurnManager : MonoBehaviour, IDependencyProvider
     {
         [SerializeField] private GameEventChannelSO uiChannel;
         [SerializeField] private GameEventChannelSO turnEventChannel;
         [SerializeField] private Player player;
 
         private List<ITurnActor> _turnActors = new();
-        private Queue<ITurnActor> _actionOrders = new();
+        public Queue<ITurnActor> ActionOrders = new();
         private bool _isBattleEnd = false;
         
         private void Awake()
@@ -45,16 +47,21 @@ namespace _01Scripts.TurnSystem
 
         private void SelectNextTurn()
         {
-            if (_actionOrders.Count <= 0) FillTurnQueue();
-            // _actionOrders.Dequeue().TurnAction();
-            DOVirtual.DelayedCall(0.5f, () => _actionOrders.Dequeue().TurnAction());
+            if (ActionOrders.Count <= 5) FillTurnQueue();
+            var actor = ActionOrders.Dequeue();
+            var evt = TurnEvents.TurnStartEvent;
+            turnEventChannel.RaiseEvent(evt);
+            DOVirtual.DelayedCall(0.1f, () =>
+            {
+                actor.TurnAction();
+            });
         }
 
         private void FillTurnQueue()
         {
             int threshold = _turnActors[0].Speed;
 
-            while (_actionOrders.Count < 10)
+            while (ActionOrders.Count < 10)
             {
                 var readyActors = _turnActors
                     .Where(a => a.ActionValue >= threshold)
@@ -74,7 +81,7 @@ namespace _01Scripts.TurnSystem
                     .First();
 
                 executionActor.ActionValue -= threshold;
-                _actionOrders.Enqueue(executionActor);
+                ActionOrders.Enqueue(executionActor);
             }
         }
     }

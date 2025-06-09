@@ -57,6 +57,7 @@ namespace _01Scripts.Players
         private void Start()
         {
             if(playerType == PlayerType.Search) _stateMachine.ChangeState("IDLE");
+            if(playerType == PlayerType.Battle) _stateMachine.ChangeState("UIBLOCK");
         }
 
         private void Update()

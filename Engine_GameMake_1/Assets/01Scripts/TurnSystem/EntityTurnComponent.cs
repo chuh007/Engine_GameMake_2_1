@@ -13,6 +13,7 @@ namespace _01Scripts.TurnSystem
             Speed = (int)entity.GetCompo<EntityStat>().GetStat(speedStat).Value;
         }
 
+        public string Name { get; set; }
         public int Speed { get; set; }
         public int ActionValue { get; set; } = 0;
         public virtual void TurnAction()

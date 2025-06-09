@@ -12,6 +12,7 @@ namespace _01Scripts.TurnSystem
         {
             base.Initialize(entity);
             _enemy = entity as Enemy;
+            Name = "적";
         }
 
         public override void TurnAction()
