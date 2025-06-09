@@ -1,8 +1,10 @@
-﻿namespace _01Scripts.Interact
+﻿using UnityEngine;
+
+namespace _01Scripts.Interact
 {
     public interface IInteractable
     {
-        public string Name { get; }
+        string Name { get; }
 
         public void Interact();
     }

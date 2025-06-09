@@ -30,7 +30,6 @@ namespace _01Scripts.Combat
             _statCompo.GetStat(hpStat).OnValueChanged += HandleHPChange;
             _currentHealth = maxHealth = _statCompo.GetStat(hpStat).Value;
             currentHpValueChangeEvent?.Invoke(_currentHealth);
-            Debug.Log(_currentHealth);
             _entity.OnDamage += ApplyDamage;
         }
 

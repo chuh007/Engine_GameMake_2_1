@@ -14,6 +14,12 @@ namespace _01Scripts.Players.States
         }
 
 
+        public override void Enter()
+        {
+            base.Enter();
+            _player.PlayerInput.OnInteractPressed += HandleInteract;
+        }
+
         public override void Update()
         {
             base.Update();
@@ -27,6 +33,11 @@ namespace _01Scripts.Players.States
                 _player.ChangeState("RUN");
         }
 
+        public override void Exit()
+        {
+            _player.PlayerInput.OnInteractPressed -= HandleInteract;
+            base.Exit();
+        }
     }
 }
 

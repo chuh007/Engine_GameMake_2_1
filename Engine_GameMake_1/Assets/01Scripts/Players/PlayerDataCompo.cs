@@ -35,7 +35,6 @@ namespace _01Scripts.Players
 
         private void HandleHpChange(float value)
         {
-            Debug.Log(value);
             health = value;
         }
 

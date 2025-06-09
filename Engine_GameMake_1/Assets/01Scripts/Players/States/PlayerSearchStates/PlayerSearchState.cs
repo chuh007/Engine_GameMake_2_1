@@ -25,12 +25,6 @@ namespace _01Scripts.Players.States.PlayerSearchStates
         {
             base.Enter();
             _player.PlayerInput.OnRunPressed += HandleRunning;
-            _player.PlayerInput.OnInteractPressed += HandleInteract;
-        }
-
-        private void HandleInteract()
-        {
-            _interact.Interact();   
         }
 
         private void HandleRunning(bool isRunning)
@@ -45,10 +39,14 @@ namespace _01Scripts.Players.States.PlayerSearchStates
             _camRotator.SetMouseDirection(rotateKey);
         }
 
+        protected void HandleInteract()
+        {
+            _interact.Interact();   
+        }
+        
         public override void Exit()
         {
             _player.PlayerInput.OnRunPressed -= HandleRunning;
-            _player.PlayerInput.OnInteractPressed -= HandleInteract;
             base.Exit();
         }
     }

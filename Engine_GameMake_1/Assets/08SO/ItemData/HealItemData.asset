@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a9752b0c8e144801967e6897679604b, type: 3}
-  m_Name: vHierarchy Data
+  m_Script: {fileID: 11500000, guid: 7f7c469510354ca998af6b0e660e413e, type: 3}
+  m_Name: HealItemData
   m_EditorClassIdentifier: 
-  sceneDatas_byGuid:
-    keys: []
-    values: []
-  bookmarks: []
-  bookmarkedScenePaths: []
+  itemName: HealItem
+  icon: {fileID: -809361918, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
+  itemID: 74a51bd16902a964a81f43ea36ed9f75
+  maxStack: 99
+  description: "\uD68C\uBCF5\uC57D"

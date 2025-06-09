@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _01Scripts.Core.EventSystem;
 using Code.Core.GameSystem;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _01Scripts.Core.GameSystem
@@ -118,6 +119,9 @@ namespace _01Scripts.Core.GameSystem
 
         #endregion
 
-
+        private void OnApplicationQuit()
+        {
+            PlayerPrefs.SetString(saveDataKey, "");
+        }
     }
 }
