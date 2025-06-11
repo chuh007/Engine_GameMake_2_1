@@ -8,6 +8,7 @@ namespace _01Scripts.Players.States.UIInputStates
     public class UIBlockInputState : UIInputState
     {
         private PlayerCostCompo _costCompo;
+        private int hitAnimationHash = Animator.StringToHash("HIT");
 
         private bool _canBlock = false;
         
@@ -22,8 +23,14 @@ namespace _01Scripts.Players.States.UIInputStates
             _canBlock = true;
             PlayerUIInoutComponent.InputUIChanged(ControlUIType.UIBlockInput);
             _player.OnDefense.AddListener(HandleDefense);
+            _player.OnHit.AddListener(HandleHit);
             _player.PlayerBattleInput.OnBlockKeyPressed += HandleBlockPressed;
 
+        }
+
+        private void HandleHit()
+        {
+            _entityAnimator.SetParam(hitAnimationHash);
         }
 
         private void HandleDefense()
@@ -51,6 +58,7 @@ namespace _01Scripts.Players.States.UIInputStates
             _costCompo.PlusCost(1);
             _player.OnDefense.RemoveListener(HandleDefense);
             _player.PlayerBattleInput.OnBlockKeyPressed -= HandleBlockPressed;
+            _player.OnHit.RemoveListener(HandleHit);
             base.Exit();
         }
     }

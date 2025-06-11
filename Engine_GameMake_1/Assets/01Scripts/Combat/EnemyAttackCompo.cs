@@ -17,12 +17,17 @@ namespace _01Scripts.Combat
         
         public override void Attack()
         {
-            currentAttackData = GetAttackData(attackDataList[Random.Range(0, attackDataList.Count)].attackName);
             base.Attack();
             DamageData data = new DamageData();
             data.damage = _damage;
             if(_target.TryCastDamage())
                 _target.ApplyDamage(data, _entity);
+        }
+
+        public int GetRandomAttack()
+        {
+            currentAttackData = GetAttackData(attackDataList[Random.Range(0, attackDataList.Count)].attackName);
+            return Animator.StringToHash(attackDataList[Random.Range(0, attackDataList.Count)].attackAnimationName);
         }
     }
 }

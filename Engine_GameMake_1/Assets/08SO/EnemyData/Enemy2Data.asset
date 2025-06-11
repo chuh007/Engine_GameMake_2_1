@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94f55a43e0794416979d986eca112934, type: 3}
-  m_Name: SpecialAttack
+  m_Script: {fileID: 11500000, guid: 02573452084f4d48a55864690623da44, type: 3}
+  m_Name: Enemy2Data
   m_EditorClassIdentifier: 
-  attackName: SpecialAttack
-  damageMultiplier: 3
-  damageIncrease: 0
-  attackAnimationName: SPECIALATTACK
-  particle: {fileID: 0}
-  triggerCount: 3
-  cost: 9
+  health: 100
+  damage: 25
+  speed: 75
+  visualName: Character_Ghost_02
+  attackDataList:
+  - {fileID: 11400000, guid: 6e9b8d5f1908a894b94f8d83a1abec1e, type: 2}

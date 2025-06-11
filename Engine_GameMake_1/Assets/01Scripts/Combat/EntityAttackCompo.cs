@@ -15,7 +15,7 @@ namespace _01Scripts.Combat
         public AttackDataSO currentAttackData;
 
         [SerializeField] protected StatSO damageStat;
-        [SerializeField] protected List<AttackDataSO> attackDataList;
+        public List<AttackDataSO> attackDataList;
 
         protected Entity _entity, _target;
         protected EntityAnimator _entityAnimator;

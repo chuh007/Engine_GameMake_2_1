@@ -12,7 +12,6 @@ namespace _01Scripts.Enemies.State
         private EntityAnimator _animator;
         private EntityAnimatorTrigger _animTrigger;
         
-        private readonly int _attackAnimationHash = Animator.StringToHash("ATTACK");
         private Vector3 orginPos;
 
         public EnemyMoveAttackState(Entity entity, int animationHash) : base(entity, animationHash)
@@ -29,9 +28,10 @@ namespace _01Scripts.Enemies.State
             _animTrigger.OnAnimationEndTrigger += HandleAnimationEndTrigger;
             _animTrigger.OnAttackTrigger += HandleAttackTrigger;
             Vector3 targetPos = _enemy.target.transform.position;
+            int hashValue = _attackCompo.GetRandomAttack();
             _entity.transform.DOMove(targetPos - (targetPos - _entity.transform.position).normalized, 0.25f).OnComplete(() =>
             {
-                _animator.SetParam(_attackAnimationHash);
+                _animator.SetParam(hashValue);
             });
         }
 
