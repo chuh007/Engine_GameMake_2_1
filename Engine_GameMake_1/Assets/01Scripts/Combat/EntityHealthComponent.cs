@@ -11,6 +11,8 @@ namespace _01Scripts.Combat
         public UnityEvent<float> currentHpValueChangeEvent;
         
         [SerializeField] private StatSO hpStat;
+        [SerializeField] private GameObject damageTextPrefab;
+        [SerializeField] private Transform damageCanvasTrm;
         public float maxHealth;
         private float _currentHealth;
         
@@ -42,8 +44,8 @@ namespace _01Scripts.Combat
         private void HandleHPChange(StatSO stat, float current, float previous)
         {
             maxHealth = current;
-            Debug.Log(_currentHealth + "로바끼ㅣㅁ");
             _currentHealth = Mathf.Clamp(_currentHealth + current - previous, 1f, maxHealth);
+            Debug.Log(_currentHealth + "로바끼ㅣㅁ");
             currentHpValueChangeEvent?.Invoke(_currentHealth);
         }
         
@@ -51,16 +53,21 @@ namespace _01Scripts.Combat
         {
             if (_entity.IsDead) return;
             Debug.Log(_currentHealth);
+            DamageText text = Instantiate(damageTextPrefab, damageCanvasTrm).GetComponent<DamageText>();
+            text.SetDamageAndPos(damageData.damage, _entity.transform.position);
             _currentHealth = Mathf.Clamp(_currentHealth - damageData.damage, 0, maxHealth);
-            // Debug.Log(_currentHealth);
-            // Debug.Log(damageData.damage);
-            // Debug.Log(maxHealth);
             Debug.Log($"{damageData.damage} 받음. 남은 HP : {_currentHealth}");
             currentHpValueChangeEvent?.Invoke(_currentHealth);
             _feedbackData.LastEntityWhoHit = dealer;
             AfterHitFeedbacks();
         }
 
+        public void ApplyHeal(float heal)
+        {
+            _currentHealth = Mathf.Clamp(_currentHealth + heal, 0, maxHealth);
+            currentHpValueChangeEvent?.Invoke(_currentHealth);
+        }
+        
         private void AfterHitFeedbacks()
         {
             _entity.OnHit?.Invoke();
@@ -75,5 +82,6 @@ namespace _01Scripts.Combat
             _currentHealth = restoreHealth;
             Debug.Log(_currentHealth);
         }
+
     }
 }

@@ -126,3 +126,6 @@ MonoBehaviour:
   <Name>k__BackingField: "\uD68C\uBCF5\uC57D"
   itemData: {fileID: 11400000, guid: 74a51bd16902a964a81f43ea36ed9f75, type: 2}
   inventoryChannel: {fileID: 11400000, guid: ea7251422ed1c4249a5c3d5ca69fbc3e, type: 2}
+  col: {fileID: 7346498381618480663}
+  meshRenderer: {fileID: 2207714614950651176}
+  <SaveID>k__BackingField: {fileID: 0}

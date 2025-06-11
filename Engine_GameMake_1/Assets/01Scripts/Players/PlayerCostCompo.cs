@@ -21,6 +21,7 @@ namespace _01Scripts.Players
 
         public void PlusCost(int cost)
         {
+            if(_cost >= 10) return;
             _cost += cost;
             UpdateCost(_cost);
         }

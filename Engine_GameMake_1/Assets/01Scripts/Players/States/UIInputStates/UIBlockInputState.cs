@@ -33,11 +33,15 @@ namespace _01Scripts.Players.States.UIInputStates
 
         private void HandleBlockPressed()
         {
-            _entity.IsDefense = true;
-            DOVirtual.DelayedCall(0.5f, () => _canBlock = true);
-            DOVirtual.DelayedCall(1f, () =>
+            
+            DOVirtual.DelayedCall(0.05f, () =>
             {
                 
+                _entity.IsDefense = true;
+            });
+            DOVirtual.DelayedCall(0.5f, () => _canBlock = true);
+            DOVirtual.DelayedCall(0.2f, () =>
+            {
                 _entity.IsDefense = false;
             });
         }

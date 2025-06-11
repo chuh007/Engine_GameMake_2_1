@@ -41,6 +41,7 @@ namespace _01Scripts.Combat
         
         public virtual void Attack()
         {
+            _baseDamage = _entityStat.GetStat(damageStat).Value;
             _damage = _baseDamage * currentAttackData.damageMultiplier +
                       currentAttackData.damageIncrease;
         }

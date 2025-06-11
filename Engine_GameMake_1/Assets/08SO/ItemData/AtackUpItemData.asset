@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7c469510354ca998af6b0e660e413e, type: 3}
   m_Name: AtackUpItemData
   m_EditorClassIdentifier: 
-  itemName: AtackUpItem
+  itemName: "\uAC15\uD654\uC81C"
   icon: {fileID: -1111427956, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
   itemID: 624a85bb641dcab4abc19c550276aee8
   maxStack: 99
-  description: "\uACF5\uACA9\uB825 10 \uC62C\uB824\uC8FC\uB294 \uAC15\uD654\uC57D"
+  description: "\uC774\uBC88 \uC804\uD22C\uB3D9\uC548 \uD53C\uD574\uB7C9\uC774 10
+    \uC0C1\uC2B9\uD569\uB2C8\uB2E4."

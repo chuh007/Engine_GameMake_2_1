@@ -12,6 +12,7 @@ namespace _01Scripts.Players
     {
         [SerializeField] private GameEventChannelSO playerChannel;
 
+        public Vector3 position;
         public int currentExp;
         public int level;
         public float health;
@@ -52,6 +53,7 @@ namespace _01Scripts.Players
         [Serializable]
         public struct PlayerSaveData
         {
+            public Vector3 position;
             public int currentExp;
             public int level;
             public float health;
@@ -63,15 +65,28 @@ namespace _01Scripts.Players
             
             PlayerSaveData data = new PlayerSaveData
             {
-                currentExp = currentExp, level = level, health = health,
+                position = position, currentExp = currentExp, level = level, health = health,
                 stats = _player.GetCompo<EntityStat>().GetSaveData()
             };
+            if (_player.playerType == PlayerType.Search)
+            {
+                data.position = _player.transform.position;
+                position = _player.transform.position;
+            }
             return JsonUtility.ToJson(data);
         }
 
         public void RestoreData(string loadedData)
         {
             PlayerSaveData loadData = JsonUtility.FromJson<PlayerSaveData>(loadedData);
+            position = loadData.position;
+            if (_player.playerType == PlayerType.Search)
+            {
+                Debug.Log("밍");
+                _player.GetComponent<CharacterController>().enabled = false;
+                _player.transform.position = position;
+                _player.GetComponent<CharacterController>().enabled = true;
+            }
             health = loadData.health;
             if(health == 0) health = _healthComponent.maxHealth;
             _player.GetCompo<EntityHealthComponent>().RestoreHealth(health);

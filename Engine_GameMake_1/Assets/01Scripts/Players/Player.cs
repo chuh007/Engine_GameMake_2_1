@@ -13,7 +13,7 @@ namespace _01Scripts.Players
     
     public class Player : Entity, IDependencyProvider
     {
-        [SerializeField] private PlayerType playerType;
+        public PlayerType playerType;
         [field: SerializeField] public PlayerInputSO PlayerInput { get; private set; }
         [field: SerializeField] public PlayerBattleInputSO PlayerBattleInput { get; private set; }
 
@@ -42,7 +42,7 @@ namespace _01Scripts.Players
 
         protected override void HandleHit()
         {
-            
+            Debug.Log("맞음");
         }
 
         protected override void HandleDead(Entity entity)

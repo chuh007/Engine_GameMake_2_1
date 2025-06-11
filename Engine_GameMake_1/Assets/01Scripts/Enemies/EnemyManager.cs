@@ -59,7 +59,7 @@ namespace _01Scripts.Enemies
         private void HandleFadeComplete(FadeCompleteEvent obj)
         {
             uiChannel.RemoveListener<FadeCompleteEvent>(HandleFadeComplete); //이벤트 제거후 씬변환.
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("SerachScene");
         }
     }
 }

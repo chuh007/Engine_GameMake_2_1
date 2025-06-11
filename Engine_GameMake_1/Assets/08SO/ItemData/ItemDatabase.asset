@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrapItems:
   - {fileID: 11400000, guid: 74a51bd16902a964a81f43ea36ed9f75, type: 2}
+  - {fileID: 11400000, guid: 624a85bb641dcab4abc19c550276aee8, type: 2}
+  - {fileID: 11400000, guid: 7aece6fb378b843468ededd531e48789, type: 2}

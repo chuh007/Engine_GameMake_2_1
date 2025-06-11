@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/00Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/ASTROFISH_GAMES/MEDIEVAL_SERIES/DETAILED_MedievalDungeons/Scenes/SerachScene.unity
+    guid: f6d30bac3432a5c45b09be25411bf0ef
   - enabled: 1
     path: Assets/00Scenes/BattleScene.unity
     guid: d646bbd1b3b86d544b4690fea98f5474

@@ -35,7 +35,7 @@ namespace _01Scripts.Players
             _playerRotation.y += _mouseDirection.x * _widthSpeed * Time.deltaTime * rotationSpeedMulti;
             _camRotation.y = _playerRotation.y;
             _camRotation.x -= _mouseDirection.y * _heightSpeed * Time.deltaTime * rotationSpeedMulti;
-            _camRotation.x = Mathf.Clamp(_camRotation.x, -85f, 85f);
+            _camRotation.x = Mathf.Clamp(_camRotation.x, -85f, 60f);
             _entity.transform.rotation = Quaternion.Euler(_playerRotation);
             cameraTrm.rotation = Quaternion.Euler(_camRotation);
         }

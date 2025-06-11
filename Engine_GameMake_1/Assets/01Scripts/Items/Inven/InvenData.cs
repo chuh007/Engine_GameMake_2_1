@@ -15,7 +15,8 @@ namespace _01Scripts.Items.Inven
             => inventory.Where(invenItem => invenItem.data == itemData);
         
         public abstract void AddItem(ItemDataSO itemData, int count = 1);
-        public abstract void RemoveItem(ItemDataSO itemData, int count);
+        public abstract void RemoveItem(ItemDataSO itemData, int count = 1);
         public abstract bool CanAddItem(ItemDataSO itemData);
+        public abstract bool CanRemoveItem(ItemDataSO itemData);
     }
 }

@@ -39,5 +39,17 @@ namespace _01Scripts.Enemies
             
             enemyData = loadData.enemyData;
         }
+
+        private void ApplyEnemyData(EnemyDataSO data)
+        {
+            foreach (GameObject child in _enemy.GetCompo<EntityAnimator>().transform)
+            {
+                if (child.name == data.name)
+                {
+                    break;
+                }
+            }
+
+        }
     }
 }
