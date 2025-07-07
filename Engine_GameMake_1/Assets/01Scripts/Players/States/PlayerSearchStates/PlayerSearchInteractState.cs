@@ -16,11 +16,13 @@ namespace _01Scripts.Players.States
         public override void Enter()
         {
             base.Enter();
+            _movement.StopImmediately();
             _animatorTrigger.OnAnimationEndTrigger += HandleInteractEnd;
         }
 
         private void HandleInteractEnd()
         {
+            _animatorTrigger.OnAnimationEndTrigger -= HandleInteractEnd;
             _player.ChangeState("MOVE");
         }
 

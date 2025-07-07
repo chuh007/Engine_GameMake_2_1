@@ -9,13 +9,6 @@ namespace _01Scripts.UI
         {
             transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
         }
-
-        #if UNITY_EDITOR
-        private void OnValidate()
-        {
-            transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
-        }
-        #endif
         
     }
 }

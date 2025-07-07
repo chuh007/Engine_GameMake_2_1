@@ -1,4 +1,5 @@
 ﻿using _01Scripts.Entities;
+using Chuh007Lib.ObjectPool.RunTime;
 using UnityEngine;
 
 namespace _01Scripts.Core.EventSystem
@@ -11,13 +12,13 @@ namespace _01Scripts.Core.EventSystem
 
     public class SpawnAnimationEffect : GameEvent
     {
-        public PoolTypeSO poolType;
+        public PoolItemSO poolType;
         public Vector3 position;
         public Quaternion rotation;
         public Vector3 scale;
         public Color effectColor;
 
-        public SpawnAnimationEffect Initializer(PoolTypeSO poolType, Vector3 position, Quaternion rotation,
+        public SpawnAnimationEffect Initializer(PoolItemSO poolType, Vector3 position, Quaternion rotation,
             Vector3 scale, Color effectColor)
         {
             this.poolType = poolType;

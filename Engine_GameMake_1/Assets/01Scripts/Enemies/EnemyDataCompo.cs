@@ -1,6 +1,7 @@
 ﻿using System;
 using _01Scripts.Combat;
 using _01Scripts.Entities;
+using _01Scripts.TurnSystem;
 using Chuh007Lib.StatSystem;
 using Code.Core.GameSystem;
 using UnityEngine;
@@ -10,9 +11,11 @@ namespace _01Scripts.Enemies
     public class EnemyDataCompo : MonoBehaviour, IEntityComponent, ISavable
     {
         [Header("Data Settings")]
+        public bool useThisData = false;
         [SerializeField] private StatSO hpStat;
         [SerializeField] private StatSO speedStat;
         [SerializeField] private StatSO attackDamageStat;
+        private EnemyTurnComponent _enemyTurnComponent;
         
         [Header("Temp")]
         [SerializeField] private EnemyDataSO enemyData;
@@ -26,7 +29,8 @@ namespace _01Scripts.Enemies
         {
             _enemy = entity as Enemy;
             _entityStat = entity.GetCompo<EntityStat>();
-            _entityAttackCompo = entity.GetCompo<EntityAttackCompo>();
+            _entityAttackCompo = entity.GetCompo<EntityAttackCompo>(true);
+            _enemyTurnComponent = entity.GetCompo<EnemyTurnComponent>();
         }
 
         [field: SerializeField] public SaveIdSO SaveID { get; private set; }
@@ -39,6 +43,7 @@ namespace _01Scripts.Enemies
         
         public string GetSaveData()
         {
+            if (!useThisData) return "";
             EnemySaveData data = new EnemySaveData
             {
                 enemyData = enemyData
@@ -65,10 +70,13 @@ namespace _01Scripts.Enemies
                     child.gameObject.SetActive(true);
                 }
             }
-            Debug.LogWarning(data.health);
             _entityStat.SetBaseValue(hpStat ,data.health);
             _entityStat.SetBaseValue(speedStat ,data.speed);
             _entityStat.SetBaseValue(attackDamageStat ,data.damage);
+            _entityAttackCompo.attackDataList = data.attackDataList;
+            _enemyTurnComponent.Name = data.enemyName;
+            _enemyTurnComponent.Icon = data.icon;
+            if(data.isBoss) _enemy.SetBoss();
         }
     }
 }

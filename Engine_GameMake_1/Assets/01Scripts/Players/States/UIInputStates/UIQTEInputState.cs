@@ -8,14 +8,21 @@ namespace _01Scripts.Players.States.UIInputStates
 {
     public class UIQTEInputState : UIInputState
     {
-        private SlidingQTE _qteCompo;
+        private QTEComponent _qteCompo;
         private PlayerAttackCompo _playerAttackCompo;
 
         private int _triggerdCount = 0;
         
         public UIQTEInputState(Entity entity, int animationHash) : base(entity, animationHash)
         {
-            _qteCompo = _player.GetCompo<SlidingQTE>();
+            _qteCompo = _player.GetCompo<QTEComponent>();
+            _playerAttackCompo = _player.GetCompo<PlayerAttackCompo>();
+        }
+
+        public override void Reset()
+        {
+            base.Reset();
+            _qteCompo = _player.GetCompo<QTEComponent>();
             _playerAttackCompo = _player.GetCompo<PlayerAttackCompo>();
         }
 
@@ -27,7 +34,7 @@ namespace _01Scripts.Players.States.UIInputStates
             _qteCompo.onSuccess.AddListener(HandleSuccess);
             _qteCompo.onFailure.AddListener(HandleFailure);
             _triggerdCount = 0;
-            _qteCompo.BeginQTE();
+            _qteCompo.StartCoroutine(_qteCompo.QTEStart(_playerAttackCompo.currentAttackData.triggerCount));
         }
 
         private void HandleSuccess()
@@ -36,7 +43,6 @@ namespace _01Scripts.Players.States.UIInputStates
             if (_triggerdCount < _playerAttackCompo.currentAttackData.triggerCount - 1)
             {
                 _triggerdCount++;
-                _qteCompo.BeginQTE();
                 return;
             }
             _player.ChangeState("ATTACKMOTION");
@@ -44,6 +50,7 @@ namespace _01Scripts.Players.States.UIInputStates
         
         private void HandleFailure()
         {
+            _qteCompo.StopAllCoroutines();
             _player.ChangeState("ATTACKMOTION");
         }
 

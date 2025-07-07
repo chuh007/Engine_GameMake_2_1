@@ -15,6 +15,12 @@ namespace _01Scripts.Players.States.UIInputStates
             PlayerUIInoutComponent = entity.GetCompo<PlayerUIInoutComponent>();
         }
 
+        public override void Reset()
+        {
+            base.Reset();
+            PlayerUIInoutComponent = _player.GetCompo<PlayerUIInoutComponent>();
+        }
+
         public override void Enter()
         {
             base.Enter();

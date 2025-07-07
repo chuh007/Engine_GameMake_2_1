@@ -48,11 +48,11 @@ namespace _01Scripts.TurnSystem
         private void SelectNextTurn()
         {
             if (ActionOrders.Count <= 5) FillTurnQueue();
-            var actor = ActionOrders.Dequeue();
-            var evt = TurnEvents.TurnStartEvent;
-            turnEventChannel.RaiseEvent(evt);
-            DOVirtual.DelayedCall(0.1f, () =>
+            DOVirtual.DelayedCall(0.15f, () =>
             {
+                var actor = ActionOrders.Dequeue();
+                var evt = TurnEvents.TurnStartEvent;
+                turnEventChannel.RaiseEvent(evt);
                 actor.TurnAction();
             });
         }
@@ -60,7 +60,6 @@ namespace _01Scripts.TurnSystem
         private void FillTurnQueue()
         {
             int threshold = _turnActors[0].Speed;
-
             while (ActionOrders.Count < 10)
             {
                 var readyActors = _turnActors

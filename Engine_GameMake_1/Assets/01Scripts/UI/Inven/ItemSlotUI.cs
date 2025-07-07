@@ -31,7 +31,6 @@ namespace _01Scripts.UI.Inven
             inventoryItem = newItem;
             
             if(inventoryItem == null) return;
-            
             itemNameText.text = inventoryItem.data.itemName;
             descriptionText.text = inventoryItem.data.description;
 

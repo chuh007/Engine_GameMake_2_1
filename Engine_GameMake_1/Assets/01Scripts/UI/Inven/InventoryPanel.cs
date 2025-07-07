@@ -42,7 +42,6 @@ namespace _01Scripts.UI.Inven
         
         private void HandleDataRefresh(InventoryDataEvent evt)
         {
-            Debug.Log(evt.items);
             inventory = evt.items; //받아온 아이템 갱신후
             currentSlotCount = evt.slotCount;
             UpdateSlotUI();
@@ -57,7 +56,6 @@ namespace _01Scripts.UI.Inven
             }
             for(int i = currentSlotCount; i < _itemSlots.Length; i++)
                 _itemSlots[i].gameObject.SetActive(false);
-
             for (int i = 0; i < inventory.Count; i++)
                 _itemSlots[i].UpdateSlot(inventory[i]);
             

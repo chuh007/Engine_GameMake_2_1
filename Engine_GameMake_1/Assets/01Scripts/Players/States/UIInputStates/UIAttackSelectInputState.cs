@@ -15,6 +15,13 @@ namespace _01Scripts.Players.States.UIInputStates
             _playerCostCompo = _player.GetCompo<PlayerCostCompo>();
         }
 
+        public override void Reset()
+        {
+            base.Reset();
+            _playerAttackCompo = _player.GetCompo<PlayerAttackCompo>();
+            _playerCostCompo = _player.GetCompo<PlayerCostCompo>();
+        }
+
         public override void Enter()
         {
             base.Enter();

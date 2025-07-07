@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections;
 using _01Scripts.Core.EventSystem;
+using _01Scripts.Enemies;
 using _01Scripts.Entities;
 using _01Scripts.Players;
 using Chuh007Lib.Dependencies;
 using Code.Core.GameSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace _01Scripts.Interact
 {
@@ -14,6 +16,9 @@ namespace _01Scripts.Interact
     {
         [SerializeField] private EntityFinderSO playerFinder;
         [SerializeField] private GameEventChannelSO uiChannel;
+        [SerializeField] private Collider col;
+        [FormerlySerializedAs("meshRenderer")] [SerializeField] private Renderer rendererCompo;
+        [SerializeField] private EnemyDataCompo enemtDataCompo;
         
         public string Name { get; private set; }
         public bool IsInteracted { get; private set; }
@@ -21,22 +26,19 @@ namespace _01Scripts.Interact
 
         private Player _player;
 
+        
         private void Awake()
         {
+            enemtDataCompo.useThisData = false;
             Name = "???";
             _player = playerFinder.Target as Player;
         }
 
-        private void Update()
-        {
-            
-        }
-
         public void Interact()
         {
-            Debug.Log("유령발견ㄴㄴㄴㄴㄴㄴㄴ");
             _player.GetCompo<CharacterMovement>().CanManualMovement = false;
             IsInteracted = true;
+            enemtDataCompo.useThisData = true;
             uiChannel.AddListener<FadeCompleteEvent>(HandleFadeComplete);
             StartCoroutine(GotoBattle());
         }
@@ -53,7 +55,8 @@ namespace _01Scripts.Interact
 
         private void HandleFadeComplete(FadeCompleteEvent obj)
         {
-            gameObject.SetActive(false);
+            col.enabled = false;
+            rendererCompo.enabled = false;
             uiChannel.RemoveListener<FadeCompleteEvent>(HandleFadeComplete);
             SceneManager.LoadScene("BattleScene");
         }
@@ -80,7 +83,8 @@ namespace _01Scripts.Interact
             GhostObjectSaveData loadSaveData = JsonUtility.FromJson<GhostObjectSaveData>(loadedData);
             if (loadSaveData.isInteracted)
             {
-                gameObject.SetActive(false);
+                col.enabled = false;
+                rendererCompo.enabled = false;
             }
         }
     }

@@ -101,5 +101,16 @@ namespace _01Scripts.Players
             
         }
 
+        public void ClearAllListeners()
+        {
+            OnAttackKeyPressed = null;
+            OnQTEKeyPressed = null;
+            OnBlockKeyPressed = null;
+            OnItemKeyPressed = null;
+            OnCancelOrESCKeyPressed = null;
+            OnSelect1KeyPressed = null;
+            OnSelect2KeyPressed = null;
+            OnSelect3KeyPressed = null;
+        }
     }
 }

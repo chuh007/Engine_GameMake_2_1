@@ -1,3 +1,4 @@
+using _01Scripts.Core.EventSystem;
 using _01Scripts.Entities;
 using _01Scripts.FSM;
 using _01Scripts.TurnSystem;
@@ -13,6 +14,7 @@ namespace _01Scripts.Players
     
     public class Player : Entity, IDependencyProvider
     {
+        [field:SerializeField] public GameEventChannelSO UIChannel { get; private set; }
         public PlayerType playerType;
         [field: SerializeField] public PlayerInputSO PlayerInput { get; private set; }
         [field: SerializeField] public PlayerBattleInputSO PlayerBattleInput { get; private set; }
@@ -20,6 +22,8 @@ namespace _01Scripts.Players
         [SerializeField] private StateDataSO[] states;
         
         private EntityStateMachine _stateMachine;
+
+        private bool isUIMode = false;
 
         [Provide]
         public Player ProvidePlayer() => this;
@@ -32,26 +36,68 @@ namespace _01Scripts.Players
             {
                 PlayerInput.SetCallbacks();
                 PlayerBattleInput.RemoveCallbacks();
+                PlayerInput.OnESCPressed += HandleESCPressed;
+
             }
             else if (playerType == PlayerType.Battle)
             {
                 PlayerInput.RemoveCallbacks();
                 PlayerBattleInput.SetCallbacks();
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
             }
         }
 
+        protected override void OnDestroy()
+        {
+            PlayerInput.OnESCPressed -= HandleESCPressed;
+            PlayerBattleInput.ClearAllListeners();
+            base.OnDestroy();
+        }
+
+        private void HandleESCPressed()
+        {
+            var evt = UIEvents.ESCUIEvent;
+            if (!isUIMode)
+            {
+                evt.isOn = true;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                Time.timeScale = 0;
+            }
+            else
+            {
+                evt.isOn = false;
+                Time.timeScale = 1;
+                HideMouse();
+            }
+
+            isUIMode = !isUIMode;
+            UIChannel.RaiseEvent(evt);
+        }
+
+        public void ResetPos()
+        {
+            var controller = GetComponent<CharacterController>();
+            controller.enabled = false;
+            transform.position = new Vector3(-553f, -24.5f, 347f);
+            controller.enabled = true;
+        }
+        
+        public void HideMouse()
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        
         protected override void HandleHit()
         {
-            Debug.Log("맞음");
         }
 
         protected override void HandleDead(Entity entity)
         {
-            
-        }
-
-        private void OnDisable()
-        {
+            IsDead = true;
+            _stateMachine.ChangeState("DEADMOTION");
         }
 
         private void Start()

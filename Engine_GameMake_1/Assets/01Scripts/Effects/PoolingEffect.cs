@@ -1,11 +1,13 @@
+using System;
+using Assets.Bocch16Lib.ObjectPool.RunTime;
+using Chuh007Lib.ObjectPool.RunTime;
 using UnityEngine;
 
-namespace _01Scripts.Effects
+namespace Blade.Effects
 {
     public class PoolingEffect : MonoBehaviour, IPoolable
     {
-        [field:SerializeField] public PoolingItemSO PoolItem {get; private set; }
-        public PoolTypeSO PoolType { get; }
+        [field:SerializeField] public PoolItemSO PoolItem {get; private set; }
         public GameObject GameObject => gameObject;
 
         private Pool _myPool;

@@ -27,7 +27,7 @@ namespace _01Scripts.Combat
         public int GetRandomAttack()
         {
             currentAttackData = GetAttackData(attackDataList[Random.Range(0, attackDataList.Count)].attackName);
-            return Animator.StringToHash(attackDataList[Random.Range(0, attackDataList.Count)].attackAnimationName);
+            return Animator.StringToHash(currentAttackData.attackAnimationName);
         }
     }
 }

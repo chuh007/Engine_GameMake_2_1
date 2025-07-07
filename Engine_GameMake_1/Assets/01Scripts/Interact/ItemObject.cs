@@ -46,6 +46,7 @@ namespace _01Scripts.Interact
             ItemObjectSaveData loadSaveData = JsonUtility.FromJson<ItemObjectSaveData>(loadedData);
             if (loadSaveData.isInteracted)
             {
+                IsInteracted = true;
                 col.enabled = false;
                 meshRenderer.enabled = false;
             }

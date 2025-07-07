@@ -1,7 +1,10 @@
+using System;
+using Assets.Bocch16Lib.ObjectPool.RunTime;
+using Chuh007Lib.ObjectPool.RunTime;
 using UnityEngine;
 using UnityEngine.VFX;
 
-namespace _01Scripts.Effects
+namespace Blade.Effects
 {
     public class PlayGraphVFX : MonoBehaviour, IPlayableVFX
     {

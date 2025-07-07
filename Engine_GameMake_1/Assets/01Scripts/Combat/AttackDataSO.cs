@@ -1,4 +1,4 @@
-﻿using _01Scripts.Effects;
+﻿using Blade.Effects;
 using UnityEngine;
 
 namespace _01Scripts.Combat
@@ -14,7 +14,7 @@ namespace _01Scripts.Combat
         public PlayParticleVFX particle;
         public int triggerCount;
         public int cost;
-        
+        public string description;
         private void OnEnable()
         {
             attackName = this.name;

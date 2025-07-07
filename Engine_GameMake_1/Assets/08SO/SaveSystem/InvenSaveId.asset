@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e350d74d598a4719b4e933659d4db1fe, type: 3}
   m_Name: InvenSaveId
   m_EditorClassIdentifier: 
-  saveID: 3
+  saveID: 999
   saveName: InventoryData
   description: "\uC778\uBCA4\uD1A0\uB9AC \uC138\uC774\uBE0C \uC544\uC774\uB514"

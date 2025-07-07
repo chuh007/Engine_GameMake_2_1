@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using _01Scripts.Core.EventSystem;
+using _01Scripts.Enemies;
 using _01Scripts.Entities;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace _01Scripts.Players
 {
@@ -12,7 +15,7 @@ namespace _01Scripts.Players
         
         [SerializeField] private GameEventChannelSO spawnChannel;
 
-        private List<Entity> _targets = new List<Entity>();
+        private List<Enemy> _targets = new List<Enemy>();
         private Player _player;
         
         public void Initialize(Entity entity)
@@ -27,10 +30,16 @@ namespace _01Scripts.Players
 
         private void HandleSpawnEntity(SpawnEntityEvent obj)
         {
-            _targets.Add(obj.Entity);
+            _targets.Add(obj.Entity as Enemy);
             CurrentTarget = _targets[0];
         }
 
+        public void ReGetEntity()
+        {
+            _targets = FindObjectsByType<Enemy>(FindObjectsSortMode.None).ToList();
+            CurrentTarget = _targets[0];
+        }
+        
         private void OnDestroy()
         {
             spawnChannel.RemoveListener<SpawnEntityEvent>(HandleSpawnEntity);

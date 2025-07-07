@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: EnemyNomalAttack2
   m_EditorClassIdentifier: 
   attackName: EnemyNomalAttack2
-  damageMultiplier: 1.5
+  damageMultiplier: 2
   damageIncrease: 0
   attackAnimationName: ATTACK2
   particle: {fileID: 0}
   triggerCount: 1
   cost: 0
+  description: "\uC801\uC774 \uAC15\uD55C \uACF5\uACA9\uC744 \uC900\uBE44\uD569\uB2C8\uB2E4."

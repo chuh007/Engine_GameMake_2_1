@@ -1,6 +1,7 @@
 ﻿using System;
 using _01Scripts.Entities;
 using _01Scripts.Interact;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ namespace _01Scripts.Players
         [SerializeField] private Transform cameraTrm;
         [SerializeField] private LayerMask whatIsTarget;
         [SerializeField] private TextMeshProUGUI nameText;
+        [SerializeField] private AudioClip catchSound;
         
         private Player _player;
         private GameObject _targetObj;
@@ -48,7 +50,11 @@ namespace _01Scripts.Players
         public void Interact()
         {
             _player.ChangeState("INTERACT");
-            _target?.Interact();
+            DOVirtual.DelayedCall(0.25f, () =>
+            {
+                SoundManager.Instance.PlaySFX(catchSound);
+                _target?.Interact();
+            });
         }
         
         private void OnDrawGizmos()

@@ -10,15 +10,40 @@ namespace _01Scripts.Entities
         public void Initialize(Entity entity)
         {
             _entity = entity;
+            if (animator == null) animator = GetComponent<Animator>();
         }
 
-        public void SetParam(int hash, float value) => animator.SetFloat(hash, value);
+        private bool IsAnimatorValid() => animator != null && !animator.Equals(null);
+        
+        public void SetParam(int hash, float value)
+        {
+            if (!IsAnimatorValid()) return;
+            animator.SetFloat(hash, value);
+        }
 
-        public void SetParamDamping(int hash, float value, float dampTime, float deltaTime) =>
+        public void SetParamDamping(int hash, float value, float dampTime, float deltaTime)
+        {
+            if (!IsAnimatorValid()) return;
             animator.SetFloat(hash, value, dampTime, deltaTime);
-        public void SetParam(int hash, int value) => animator.SetInteger(hash, value);
-        public void SetParam(int hash, bool value) => animator.SetBool(hash, value);
-        public void SetParam(int hash) => animator.SetTrigger(hash);
+        }
+
+        public void SetParam(int hash, int value)
+        {
+            if (!IsAnimatorValid()) return;
+            animator.SetInteger(hash, value);
+        }
+
+        public void SetParam(int hash, bool value)
+        {
+            if (!IsAnimatorValid()) return;
+            animator.SetBool(hash, value);
+        }
+
+        public void SetParam(int hash)
+        {
+            if (!IsAnimatorValid()) return;
+            animator.SetTrigger(hash);
+        }
     }
 }
 

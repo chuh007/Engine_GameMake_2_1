@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02573452084f4d48a55864690623da44, type: 3}
+  m_Name: Enemy5Data
+  m_EditorClassIdentifier: 
+  health: 350
+  damage: 40
+  speed: 90
+  visualName: Character_Skeleton_Soldier_02
+  enemyName: "\uC8FD\uB2E4 \uB9CC \uC790"
+  icon: {fileID: -1138557387, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
+  isBoss: 0
+  attackDataList:
+  - {fileID: 11400000, guid: 6e9b8d5f1908a894b94f8d83a1abec1e, type: 2}
+  - {fileID: 11400000, guid: 9668b38353135944681d962204fcf801, type: 2}
+  - {fileID: 11400000, guid: f64c91767f324a243be18d9b4da6ddc1, type: 2}
+  - {fileID: 11400000, guid: 2bca397f1e303df47ba1c628faf5f2f7, type: 2}

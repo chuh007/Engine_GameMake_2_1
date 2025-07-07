@@ -9,6 +9,7 @@ namespace _01Scripts.Players
     {
         [SerializeField] private LayerMask whatIsGround;
         public event Action OnInteractPressed;
+        public event Action OnESCPressed;
         public event Action<bool> OnRunPressed;
         
         public Vector2 MovementKey { get; private set; }
@@ -63,12 +64,19 @@ namespace _01Scripts.Players
             if(context.canceled)
                 OnRunPressed?.Invoke(false);
         }
-        
+
+        public void OnESC(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+                OnESCPressed?.Invoke();
+        }
+
         public void OnInteract(InputAction.CallbackContext context)
         {
             if(context.performed)
                 OnInteractPressed?.Invoke();
         }
+        
         
     }
 }

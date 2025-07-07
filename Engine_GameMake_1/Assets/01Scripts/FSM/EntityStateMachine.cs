@@ -38,6 +38,14 @@ namespace _01Scripts.FSM
             CurrentState.Enter();
         }
 
+        public void ResetStates()
+        {
+            foreach (var state in _states)
+            {
+                state.Value.Reset();
+            }
+        }
+        
         public void UpdateStateMachine()
         {
             CurrentState?.Update();

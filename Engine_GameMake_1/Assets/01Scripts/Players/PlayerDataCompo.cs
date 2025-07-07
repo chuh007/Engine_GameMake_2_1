@@ -82,7 +82,6 @@ namespace _01Scripts.Players
             position = loadData.position;
             if (_player.playerType == PlayerType.Search)
             {
-                Debug.Log("밍");
                 _player.GetComponent<CharacterController>().enabled = false;
                 _player.transform.position = position;
                 _player.GetComponent<CharacterController>().enabled = true;

@@ -29,9 +29,12 @@ namespace _01Scripts.Enemies.State
             _animTrigger.OnAttackTrigger += HandleAttackTrigger;
             Vector3 targetPos = _enemy.target.transform.position;
             int hashValue = _attackCompo.GetRandomAttack();
-            _entity.transform.DOMove(targetPos - (targetPos - _entity.transform.position).normalized, 0.25f).OnComplete(() =>
+            var evt = EnemyEvents.EnemyActionEvent;
+            evt.description = _attackCompo.currentAttackData.description;
+            _enemy.enemyChannel.RaiseEvent(evt);
+            _entity.transform.DOMove(targetPos - (targetPos - _entity.transform.position).normalized * 1.5f, 0.25f).OnComplete(() =>
             {
-                _animator.SetParam(hashValue);
+                DOVirtual.DelayedCall(0.1f, () => _animator.SetParam(hashValue));
             });
         }
 

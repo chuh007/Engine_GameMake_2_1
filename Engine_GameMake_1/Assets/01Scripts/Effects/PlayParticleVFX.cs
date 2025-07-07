@@ -1,6 +1,9 @@
+using System;
+using Assets.Bocch16Lib.ObjectPool.RunTime;
+using Chuh007Lib.ObjectPool.RunTime;
 using UnityEngine;
 
-namespace _01Scripts.Effects
+namespace Blade.Effects
 {
     public class PlayParticleVFX : MonoBehaviour, IPlayableVFX
     {
@@ -8,6 +11,7 @@ namespace _01Scripts.Effects
         [SerializeField] private bool isOnPosition;
         [SerializeField] private ParticleSystem particle;
         
+
         public void PlayVFX(Vector3 position, Quaternion rotation)
         {
             if(isOnPosition == false)
@@ -26,5 +30,6 @@ namespace _01Scripts.Effects
             if (string.IsNullOrEmpty(VFXName) == false)
                 gameObject.name = VFXName;
         }
+
     }
 }

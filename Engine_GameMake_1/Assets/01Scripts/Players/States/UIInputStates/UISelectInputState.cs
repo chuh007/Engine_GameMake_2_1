@@ -1,4 +1,5 @@
 ﻿using _01Scripts.Core;
+using _01Scripts.Core.EventSystem;
 using _01Scripts.Entities;
 using _01Scripts.FSM;
 using UnityEngine;
@@ -24,7 +25,10 @@ namespace _01Scripts.Players.States.UIInputStates
         
         private void HandleCancelOrEscKeyPressed()
         {
-            // ESC 출력
+            var evt = UIEvents.ESCUIEvent;
+            evt.isOn = !evt.isOn;
+            Time.timeScale = evt.isOn ? 0 : 1;
+            _player.UIChannel.RaiseEvent(evt);
         }
 
         private void HandleAttackKeyPressed()

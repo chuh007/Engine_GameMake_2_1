@@ -37,11 +37,12 @@ namespace _01Scripts.Players
 
         private void HandleUIChange(PlayerUIChangeEvent evt)
         {
-            var selectCamera = _uiObjects.GetValueOrDefault(evt.ControlUIType);
             foreach (var obj in _uiObjects)
             {
                 obj.Value.SetActive(false);
             }
+            if(evt.ControlUIType == default) return;
+            var selectCamera = _uiObjects.GetValueOrDefault(evt.ControlUIType);
             selectCamera.gameObject.SetActive(true);
         }
 

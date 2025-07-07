@@ -37,6 +37,7 @@ namespace _01Scripts.Enemies
         private void HandleEnemyDead(Entity entity)
         {
             Enemy enemy = entity as Enemy;
+            if(enemy.IsBoss) return;
             enemies.Remove(enemy);
             if (enemies.Count == 0)
             {
@@ -52,6 +53,7 @@ namespace _01Scripts.Enemies
             fadeEvt.isFadeIn = false;
             fadeEvt.fadeTime = 0.5f;
             yield return new WaitForSeconds(0.5f);
+            SoundManager.Instance.StopBGM();
             uiChannel.RaiseEvent(fadeEvt);
 
         }

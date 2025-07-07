@@ -36,7 +36,7 @@ namespace _01Scripts.UI
             if (fadeEvt.isFadeIn) //새로운 씬에 들어온거니까.
             {
                 LoadGameEvent loadEvt = SystemEvents.LoadGameEvent;
-                loadEvt.isLoadFromFile = false;
+                loadEvt.isLoadFromFile = true;
                 systemChannel.RaiseEvent(loadEvt);
             }
             
@@ -45,7 +45,7 @@ namespace _01Scripts.UI
                 if (fadeEvt.isFadeIn == false) //씬을 이동하기 위해 암전한 상태
                 {
                     SaveGameEvent saveEvt = SystemEvents.SaveGameEvent;
-                    saveEvt.isSaveToFile = false;
+                    saveEvt.isSaveToFile = true;
                     systemChannel.RaiseEvent(saveEvt);
                 }
                 uiChannel.RaiseEvent(UIEvents.FadeCompleteEvent);

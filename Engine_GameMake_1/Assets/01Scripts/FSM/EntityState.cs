@@ -35,6 +35,12 @@ namespace _01Scripts.FSM
 
         }
 
+        public virtual void Reset()
+        {
+        }
+        
         public virtual void AnimationEndTrigger() => _isTriggerCall = true;
+
+
     }
 }

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02573452084f4d48a55864690623da44, type: 3}
   m_Name: Enemy1Data
   m_EditorClassIdentifier: 
-  health: 75
+  health: 125
   damage: 20
   speed: 50
   visualName: Character_Ghost_01
+  enemyName: "\uC720\uB839(\uB0A8)"
+  icon: {fileID: 21300000, guid: 2a14ed8b804241146b6a2e4cc6d7ee4c, type: 3}
   attackDataList:
   - {fileID: 11400000, guid: 6e9b8d5f1908a894b94f8d83a1abec1e, type: 2}

@@ -9,7 +9,8 @@ namespace _01Scripts.Players
     {
         [SerializeField] private GameEventChannelSO cameraChannel;
         [SerializeField] private GameEventChannelSO playerChannel;
-
+        [SerializeField] private AudioClip selectSound;
+        
         private Player _player;
         
         public void Initialize(Entity entity)
@@ -17,13 +18,14 @@ namespace _01Scripts.Players
             _player = entity as Player;
         }
 
-        public void InputUIChanged(ControlUIType cameraType)
+        public void InputUIChanged(ControlUIType cameraType, bool uiToo = true)
         {
+            SoundManager.Instance.PlaySFX(selectSound);
             var camEvt = CameraEvents.CameraChangeEvent;
             camEvt.CameraType = cameraType;
             cameraChannel.RaiseEvent(camEvt);
             var uiEvt = PlayerEvents.PlayerUIChangeEvent;
-            uiEvt.ControlUIType = cameraType;
+            uiEvt.ControlUIType = uiToo ? cameraType : default;
             playerChannel.RaiseEvent(uiEvt);
         }
     }

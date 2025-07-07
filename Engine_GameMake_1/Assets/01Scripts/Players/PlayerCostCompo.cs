@@ -1,4 +1,5 @@
 ﻿using _01Scripts.Entities;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -7,9 +8,8 @@ namespace _01Scripts.Players
 {
     public class PlayerCostCompo : MonoBehaviour, IEntityComponent
     {
+        [SerializeField] private TextMeshProUGUI costText;
         [SerializeField] private Image[] costImg;
-        [SerializeField] private Sprite costActive;
-        [SerializeField] private Sprite costUnActive;
         private Player _player;
         private int _cost;
         
@@ -40,14 +40,15 @@ namespace _01Scripts.Players
         
         private void UpdateCost(int currentCost)
         {
+            costText.text = currentCost.ToString();
             _cost = currentCost;
             for (int i = 0; i < _cost; i++)
             {
-                costImg[i].sprite = costActive;
+                costImg[i].color = Color.cyan;
             }
             for (int i = _cost; i < costImg.Length; i++)
             {
-                costImg[i].sprite = costUnActive;
+                costImg[i].color = Color.gray;
             }
         }
     }

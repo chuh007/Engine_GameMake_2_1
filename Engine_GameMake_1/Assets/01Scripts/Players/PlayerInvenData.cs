@@ -57,10 +57,6 @@ namespace _01Scripts.Players
 
             inventoryChannel.RaiseEvent(
                 InventoryEvents.InventoryDataEvent.Initializer(2, inventory));
-            if (inventory.Count > 0)
-            {
-                Debug.Log(inventory[0].data);
-            }
         }
         private void HandleAddItem(AddItemEvent evt) => AddItem(evt.itemData);
         
@@ -71,12 +67,10 @@ namespace _01Scripts.Players
 
             if (canAddItem == default)
             {
-                Debug.Log("새로운 칸에 넣다");
                 CreateNewInventory(itemData, count);
             }
             else
             {
-                Debug.Log("기존 칸에 넣다");
                 int remain = canAddItem.AddStack(count); 
                 if(remain > 0)
                     CreateNewInventory(itemData, remain);
@@ -101,19 +95,6 @@ namespace _01Scripts.Players
             {
                 if(canAddItem.stackSize == 0) return;
                 canAddItem.RemoveStack(count);
-                // if (canAddItem.data.itemName == "HealthItem") // 임시코드인데 개쓰래기네
-                // {
-                //     var healthevt = UIEvents.HealthItemEvent;
-                //     healthevt.itemCount = canAddItem.stackSize + count;
-                //     uiChannel.RaiseEvent(healthevt);
-                // }
-                // else
-                // {
-                //     var attackevt = UIEvents.AttackItemEvent;
-                //     attackevt.itemCount = canAddItem.stackSize + count;
-                //     uiChannel.RaiseEvent(attackevt);
-                // }
-
 
                 UpdateInventoryUI();
             }
@@ -206,6 +187,9 @@ namespace _01Scripts.Players
         public void RestoreData(string loadedData)
         {
             InvenSaveData loadedSaveData = JsonUtility.FromJson<InvenSaveData>(loadedData);
+            foreach (InvenItemSaveData itemData in loadedSaveData.items)
+            {
+            }
             loadedSaveData.items.Sort((item1, item2) => item1.slotIndex - item2.slotIndex);
             inventory = loadedSaveData.items.Select(saveItem =>
             {

@@ -26,13 +26,28 @@ namespace _01Scripts.Players.States.UIInputStates
             _shaker = entity.GetCompo<PlayerCamShaker>();
         }
 
+        public override void Reset()
+        {
+            base.Reset();
+            _attackCompo = _player.GetCompo<PlayerAttackCompo>();
+            _targetSelector = _player.GetCompo<PlayerTargetSelector>();
+            _animator = _player.GetCompo<EntityAnimator>();
+            _animTrigger = _player.GetCompo<EntityAnimatorTrigger>();
+            _shaker = _player.GetCompo<PlayerCamShaker>();
+        }
+
         public override void Enter()
         {
             base.Enter();
             _orginPos = _player.transform.position;
-            PlayerUIInoutComponent.InputUIChanged(ControlUIType.UIBlockInput);
+            PlayerUIInoutComponent.InputUIChanged(ControlUIType.UIBlockInput, false);
             _animTrigger.OnAttackTrigger += HandleAttackTrigger;
             _animTrigger.OnAnimationEndTrigger += HandleAnimationEndTrigger;
+            if (_targetSelector.CurrentTarget == null)
+            {
+                _targetSelector.ReGetEntity();
+                _attackCompo.SetTarget(_targetSelector.CurrentTarget);
+            }
             Vector3 targetPos = _targetSelector.CurrentTarget.transform.position;
             _player.transform.DOMove(targetPos - (targetPos - _player.transform.position).normalized, 0.25f).OnComplete(() =>
             {
@@ -48,9 +63,9 @@ namespace _01Scripts.Players.States.UIInputStates
 
         private void HandleAnimationEndTrigger()
         {
-            _player.ChangeState("UIBLOCK");
             _player.transform.DOMove(_orginPos, 0.25f).OnComplete(() =>
             {
+                _player.ChangeState("UIBLOCK");
                 TurnEndEvent evt = TurnEvents.TurnEndEvent;
                 _player.TurnChannel.RaiseEvent(evt);
             });

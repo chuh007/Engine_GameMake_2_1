@@ -4,8 +4,8 @@
     {
         public static readonly FadeEvent FadeEvent = new FadeEvent();
         public static readonly FadeCompleteEvent FadeCompleteEvent = new FadeCompleteEvent();
-        public static readonly HealthItemEvent HealthItemEvent = new HealthItemEvent();
-        public static readonly AttackItemEvent AttackItemEvent = new AttackItemEvent();
+        public static readonly DeadUIEvent DeadUIEvent = new DeadUIEvent();
+        public static readonly ESCUIEvent ESCUIEvent = new ESCUIEvent();
     }
     
     public class FadeEvent : GameEvent
@@ -17,13 +17,11 @@
 
     public class FadeCompleteEvent : GameEvent { }
 
-    public class HealthItemEvent : GameEvent
+    public class ESCUIEvent : GameEvent
     {
-        public int itemCount;
+        public bool isOn;
     }
     
-    public class AttackItemEvent : GameEvent
-    {
-        public int itemCount;
-    }
+    public class DeadUIEvent : GameEvent { }
+    
 }

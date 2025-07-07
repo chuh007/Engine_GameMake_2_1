@@ -45,18 +45,15 @@ namespace _01Scripts.Combat
         {
             maxHealth = current;
             _currentHealth = Mathf.Clamp(_currentHealth + current - previous, 1f, maxHealth);
-            Debug.Log(_currentHealth + "로바끼ㅣㅁ");
             currentHpValueChangeEvent?.Invoke(_currentHealth);
         }
         
         private void ApplyDamage(DamageData damageData, Entity dealer)
         {
             if (_entity.IsDead) return;
-            Debug.Log(_currentHealth);
             DamageText text = Instantiate(damageTextPrefab, damageCanvasTrm).GetComponent<DamageText>();
             text.SetDamageAndPos(damageData.damage, _entity.transform.position);
             _currentHealth = Mathf.Clamp(_currentHealth - damageData.damage, 0, maxHealth);
-            Debug.Log($"{damageData.damage} 받음. 남은 HP : {_currentHealth}");
             currentHpValueChangeEvent?.Invoke(_currentHealth);
             _feedbackData.LastEntityWhoHit = dealer;
             AfterHitFeedbacks();
@@ -64,7 +61,7 @@ namespace _01Scripts.Combat
 
         public void ApplyHeal(float heal)
         {
-            _currentHealth = Mathf.Clamp(_currentHealth + heal, 0, maxHealth);
+            _currentHealth = Mathf.Clamp(_currentHealth + maxHealth * (heal / 100f), 0, maxHealth);
             currentHpValueChangeEvent?.Invoke(_currentHealth);
         }
         
@@ -80,7 +77,7 @@ namespace _01Scripts.Combat
         public void RestoreHealth(float restoreHealth)
         {
             _currentHealth = restoreHealth;
-            Debug.Log(_currentHealth);
+            currentHpValueChangeEvent?.Invoke(_currentHealth);
         }
 
     }

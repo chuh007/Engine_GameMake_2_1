@@ -2,6 +2,7 @@
 {
     public enum ControlUIType
     {
+        Default,
         UISelect,
         UIAttackSelect,
         UIChoseTarget,

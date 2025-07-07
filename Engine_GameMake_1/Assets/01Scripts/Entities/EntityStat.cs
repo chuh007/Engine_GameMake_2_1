@@ -26,6 +26,11 @@ namespace _01Scripts.Entities
             return _stats.FirstOrDefault(stat => stat.statName == targetStat.statName);
         }
 
+        public StatSO GetStat(string statName)
+        {
+            return _stats.FirstOrDefault(stat => stat.statName == statName);
+        }
+
         public bool TryGetStat(StatSO targetStat, out StatSO outStat)
         {
             Debug.Assert(targetStat != null, "Stats::GetStat : target stat is null");

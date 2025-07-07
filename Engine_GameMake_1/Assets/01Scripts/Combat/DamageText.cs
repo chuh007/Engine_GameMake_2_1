@@ -1,6 +1,5 @@
 ﻿using TMPro;
 using UnityEngine;
-using VHierarchy.Libs;
 
 namespace _01Scripts.Combat
 {
@@ -25,7 +24,7 @@ namespace _01Scripts.Combat
             if (_damageText == null) return;
 
             _damageText.text = damage.ToString();
-            beforePos = pos + Random.insideUnitSphere + Vector3.up * 0.5f;
+            beforePos = pos + Random.insideUnitSphere * 0.5f + Vector3.up * 0.75f;
             _startTime = Time.time;
         }
 

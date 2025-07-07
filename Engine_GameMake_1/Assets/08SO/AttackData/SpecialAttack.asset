@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpecialAttack
   m_EditorClassIdentifier: 
   attackName: SpecialAttack
-  damageMultiplier: 3
+  damageMultiplier: 5
   damageIncrease: 0
   attackAnimationName: SPECIALATTACK
   particle: {fileID: 0}

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94f55a43e0794416979d986eca112934, type: 3}
   m_Name: EnemyNomalAttack1
   m_EditorClassIdentifier: 
-  attackName: NomalAttack
+  attackName: EnemyNomalAttack1
   damageMultiplier: 1
   damageIncrease: 0
   attackAnimationName: ATTACK
   particle: {fileID: 0}
   triggerCount: 1
+  cost: 0
+  description: "\uC801\uC774 \uACF5\uACA9\uC744 \uC900\uBE44\uD569\uB2C8\uB2E4."

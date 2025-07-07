@@ -26,6 +26,9 @@ namespace _01Scripts.Core.GameSystem
         [SerializeField] private GameEventChannelSO systemChannel;
         [SerializeField] private string saveDataKey = "savedGame";
         
+        private string SaveFilePath => System.IO.Path.Combine(Application.persistentDataPath, saveDataKey + ".json");
+        
+        
         private List<SaveData> unUsedData = new List<SaveData>();
 
         private void Awake()
@@ -46,13 +49,20 @@ namespace _01Scripts.Core.GameSystem
         {
             if (saveEvt.isSaveToFile == false)
                 SaveGameToPrefs();
+            else
+                SaveGameToFile();
         }
 
+        private void SaveGameToFile()
+        {
+            string dataJson = GetDataToSave();
+            System.IO.File.WriteAllText(SaveFilePath, dataJson);
+        }
+        
         private void SaveGameToPrefs()
         {
             string dataJson = GetDataToSave();
             PlayerPrefs.SetString(saveDataKey, dataJson);
-            Debug.Log(dataJson);
         }
 
         private string GetDataToSave()
@@ -64,7 +74,9 @@ namespace _01Scripts.Core.GameSystem
 
             foreach (ISavable savable in savableObjects)
             {
-                saveDataList.Add(new SaveData{saveID = savable.SaveID.saveID, data = savable.GetSaveData()});
+                var saveData = new SaveData { saveID = savable.SaveID.saveID, data = savable.GetSaveData() };
+                if(saveData.data == "") continue;
+                saveDataList.Add(saveData);
             }
             
             saveDataList.AddRange(unUsedData);
@@ -81,8 +93,24 @@ namespace _01Scripts.Core.GameSystem
         {
             if (loadEvt.isLoadFromFile == false)
                 LoadFromPrefs();
+            else
+                LoadFromFile();
         }
 
+        private void LoadFromFile()
+        {
+            if (System.IO.File.Exists(SaveFilePath))
+            {
+                string loadedJson = System.IO.File.ReadAllText(SaveFilePath);
+                RestoreData(loadedJson);
+            }
+            else
+            {
+                Debug.LogWarning("세이브 파일 없음: " + SaveFilePath);
+                RestoreData("");
+            }
+        }
+        
         private void LoadFromPrefs()
         {
             string loadedJson = PlayerPrefs.GetString(saveDataKey, string.Empty);
@@ -122,6 +150,8 @@ namespace _01Scripts.Core.GameSystem
         private void OnApplicationQuit()
         {
             PlayerPrefs.SetString(saveDataKey, "");
+            if (System.IO.File.Exists(SaveFilePath))
+                System.IO.File.Delete(SaveFilePath);
         }
     }
 }

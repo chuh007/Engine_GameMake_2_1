@@ -29,6 +29,10 @@ namespace _01Scripts.Players.States.UIInputStates
         
         private void HandleSelectTarget()
         {
+            if (_targetSelector.CurrentTarget == null)
+            {
+                _targetSelector.ReGetEntity();
+            }
             Entity target = _targetSelector.CurrentTarget;
             _attackCompo.SetTarget(target);
             _costCompo.SpendCost(_attackCompo.currentAttackData.cost);
