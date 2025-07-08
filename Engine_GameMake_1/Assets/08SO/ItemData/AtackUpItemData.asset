@@ -1,20 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f7c469510354ca998af6b0e660e413e, type: 3}
-  m_Name: AtackUpItemData
-  m_EditorClassIdentifier: 
-  itemName: "\uAC15\uD654\uC81C"
-  icon: {fileID: -1111427956, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
-  itemID: 624a85bb641dcab4abc19c550276aee8
-  maxStack: 99
-  description: "\uC774\uBC88 \uC804\uD22C\uB3D9\uC548 \uACF5\uACA9\uB825\uC774 10
-    \uC0C1\uC2B9\uD569\uB2C8\uB2E4.(\uC911\uBCF5 \uBD88\uAC00)"
+version https://git-lfs.github.com/spec/v1
+oid sha256:ea41a0165ad69a4d84d67c70d0571911d55cfe7e5f5367cf1b2362cd949c42e8
+size 740

@@ -1,22 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94f55a43e0794416979d986eca112934, type: 3}
-  m_Name: EnemyNomalAttack2
-  m_EditorClassIdentifier: 
-  attackName: EnemyNomalAttack2
-  damageMultiplier: 2
-  damageIncrease: 0
-  attackAnimationName: ATTACK2
-  particle: {fileID: 0}
-  triggerCount: 1
-  cost: 0
-  description: "\uC801\uC774 \uAC15\uD55C \uACF5\uACA9\uC744 \uC900\uBE44\uD569\uB2C8\uB2E4."
+version https://git-lfs.github.com/spec/v1
+oid sha256:7a4f9cdd26a2a9604491abd4a1a256232ccf50f10ff14c26b194ef696bfdd6db
+size 679

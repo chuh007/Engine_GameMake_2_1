@@ -1,17 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e350d74d598a4719b4e933659d4db1fe, type: 3}
-  m_Name: DeathSaveId50
-  m_EditorClassIdentifier: 
-  saveID: 250
-  saveName: GhostItemData2
-  description: "\uBCF4\uC2A4 \uC138\uC774\uBE0C \uC544\uC774"
+version https://git-lfs.github.com/spec/v1
+oid sha256:65476c2664daae53a093d1831602be33f0f537614824cd9c2237470833e4ba71
+size 522
